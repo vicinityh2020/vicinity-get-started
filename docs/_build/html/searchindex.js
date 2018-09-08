@@ -1,0 +1,1 @@
+Search.setIndex({docnames:["index"],envversion:54,filenames:["index.rst"],objects:{},objnames:{},objtypes:{},terms:{index:0,modul:0,page:0,search:0},titles:["Welcome to VICINITY Get Started\u2019s documentation!"],titleterms:{document:0,get:0,indic:0,start:0,tabl:0,vicin:0,welcom:0}})

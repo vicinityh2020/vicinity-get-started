@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>VICINITY Vocabulary &mdash; VICINITY Get Started 0.6.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get started" href="getstarted.html" />
+    <link rel="prev" title="VICINITY Overall architecture" href="architecture.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> VICINITY Get Started
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">VICINITY Overall architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VICINITY Vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Get started</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">VICINITY Get Started</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>VICINITY Vocabulary</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/vocabulary.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vicinity-vocabulary">
+<h1>VICINITY Vocabulary<a class="headerlink" href="#vicinity-vocabulary" title="Permalink to this headline">¶</a></h1>
+<dl class="glossary docutils">
+<dt id="term-vicinity-cloud">VICINITY Cloud</dt>
+<dd>The VICINITY Cloud enables IoT infrastructure operators and Service providers to configure a virtual neighbourhood of connected devices and value-added services including the setup of sharing access rules between them through the user-friendly interface of VICINITY Neighbourhood Manager accessible through <a class="reference external" href="http://vicinity.bavenir.eu">http://vicinity.bavenir.eu</a>.</dd>
+<dt id="term-vicinity-node">VICINITY Node</dt>
+<dd>A VICINITY Node is the set of software components which maintains the user data exchange between peers in the VICINITY P2P network based on configuration of the virtual neighbourhood and sharing rules received from VICINITY Communication Server. VICINITY Node is collection of software components (VICINITY Gateway API, VICINITY Agent and VICINITY Adapter) enables your IoT infrastructure or services communicates with other VICINITY enabled devices and services.</dd>
+<dt id="term-vicinity-adapter">VICINITY Adapter</dt>
+<dd><p class="first">The <em>VICINITY Adapter</em> is a component provided by IoT infrastructure owner/ vendor or respective system integrator. The VICINITY Adapter provides translates the VICINITY “world” into the IoT infrastructure specific environment. The core responsibilities of the Adapter are:</p>
+<ul class="last simple">
+<li>to provide the description of each IoT objects (devices, services) of infrastructure in common VICINITY format, which enables VICINITY to create internal models of used IoT objects in uniform way;</li>
+<li>to provide access to properties, actions and events of devices and services provided by infrastructure.</li>
+</ul>
+</dd>
+<dt id="term-vicinity-gateway-api">VICINITY Gateway API</dt>
+<dd>The <em>VICINITY Gateway API</em> provides services to access VICINITY Peer-to-peer network. It is primary interface towards VICINITY Platform.</dd>
+<dt id="term-vicinity-agent">VICINITY Agent</dt>
+<dd>The <em>VICINITY Agent</em> is the wrapper for the VICINITY Adapter. The VICINITY Agent provides the full VICINITY specific functionality, as managing communication via P2P network, semantic discovery of IoT objects (devices and services), semantic search of IoT objects, communication with IoT objects within the infrastructure, where each VICINITY specific interaction with IoT objects is translated in the VICINITY Adapter calls.
+In general, <em>VICINITY Agent</em> simplifies the communication with VICINITY Gateway API especially with IoT objects (device and services) registration and update.</dd>
+<dt id="term-agent-id-agid">Agent ID (agid)</dt>
+<dd>The Agent ID is UUID (VICINITY Platform unique key) which represents adapter in VICINITY peer-to-peer network. The agent Id is generated during registration of the access point in VICINITY Neighbourhood manager (<a class="reference external" href="https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Access-points">https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Access-points</a>). The agent ID is used during login of the VICINITY Adapter into the peer-to-peer network and during registration of IoT objects.</dd>
+<dt id="term-object-id-oid">Object ID (oid)</dt>
+<dd>The Object ID is UUID (VICINITY Platform unique key) which represents any device and service registered in VICINITY. This ID is used to access devices and services properties, actions and events. The ID is generated during device and service registration via VICINITY Gateway API.</dd>
+<dt id="term-property-id-pid">Property ID (pid)</dt>
+<dd>The Property ID is UUID (IoT object unique key) which represents any property provided by the device or service.</dd>
+<dt id="term-action-id-aid">Action ID (aid)</dt>
+<dd>The Action ID is UUID (IoT object unique key) which represents any action provided by the device or service.</dd>
+<dt id="term-event-id-eid">Event ID (eid)</dt>
+<dd>The Event ID is UUID (IoT object unique key) which represents any event provided by the device or service.</dd>
+<dt id="term-iot-object">IoT Object</dt>
+<dd>The IoT object is any device or service registered in VICINITY Platform. The IoT object is referenced by uniq <em>oid</em> generated during its registration. The IoT object is represented by Thing description. In terms of devices, the IoT object represents a virtual device.</dd>
+<dt id="term-virtual-device">Virtual device</dt>
+<dd><p class="first">The virtual device represents set of device(s) capabilities (such as current temperature, on/off switch, etc.). The set of device(s) capabilities can be represented in the real world as follows:
+* 1-on-1: virtual device have the same set of capabilities as physical one represented by the virtual one;
+* subsetting: virtual device have the subset of physical device capabilities, Note that capabilities which are not provided by virtual device will not be accessed through the VICINITY;
+* union: virtual device represents the multiple physical devices in one virtual device.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Currently VICINITY support any access restrictions on the level of virtual device. Enabling access to union virtual device results in access to all related physical devices by design. Enabling access to 1-on-1 virtual device results in access to all capabilities of physical device. Hence it is advised to follow subsetting virtual device approach.</p>
+</div>
+<p class="last">The virtual device is represented by one Thing description.</p>
+</dd>
+<dt id="term-thing-description-td">Thing description (TD)</dt>
+<dd>The thing description is JSON object providing identification of IoT object and description of each IoT object capabilities (properties, actions and events) (<a class="reference external" href="https://github.com/vicinityh2020/vicinity-agent/blob/master/docs/TD.md">https://github.com/vicinityh2020/vicinity-agent/blob/master/docs/TD.md</a> ).</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getstarted.html" class="btn btn-neutral float-right" title="Get started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="architecture.html" class="btn btn-neutral" title="VICINITY Overall architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Viktor Oravec.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.2',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

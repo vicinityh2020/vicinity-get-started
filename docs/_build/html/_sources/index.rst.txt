@@ -10,7 +10,10 @@ Welcome to VICINITY Get Started's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   architecture
+   vocabulary
+   getstarted
+   
 
 Indices and tables
 ==================

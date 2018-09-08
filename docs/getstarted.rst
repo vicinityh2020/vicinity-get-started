@@ -71,10 +71,22 @@ We will start with simple VICINITY Gateway API installation.
 Install the VICINITY Agent
 -----------------------------------------------
 
+.. todo:: Add VICINITY Agent installation
+
 -----------------------------------------------
 Register your device
 -----------------------------------------------
 
+.. todo::  Add registration of device with VICINITY Agent
+
+-----------------------------------------------
+Register your device
+-----------------------------------------------
+
+.. todo:: Add registration of device without VICINITY Agent
+
 -----------------------------------------------
 Read data from your device
 -----------------------------------------------
+
+.. todo:: Add VICINITY Agent installation

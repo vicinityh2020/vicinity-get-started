@@ -82,9 +82,8 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">VICINITY Overall architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vocabulary.html">VICINITY Vocabulary</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#register-your-organisation-in-vicinity-platform">Register your organisation in VICINITY Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-gateway-api">Install the VICINITY Gateway API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-agent-optional">Install the VICINITY Agent (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-agent">Install the VICINITY Agent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#register-your-device">Register your device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#read-data-from-your-device">Read data from your device</a></li>
 </ul>
@@ -155,14 +154,79 @@
             
   <div class="section" id="get-started">
 <h1>Get started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="register-your-organisation-in-vicinity-platform">
-<h2>Register your organisation in VICINITY Platform<a class="headerlink" href="#register-your-organisation-in-vicinity-platform" title="Permalink to this headline">¶</a></h2>
-</div>
+<p>This “simple:)” get started guide provides step by step approach to integrate IoT infrastructure in VICINITY.</p>
 <div class="section" id="install-the-vicinity-gateway-api">
 <h2>Install the VICINITY Gateway API<a class="headerlink" href="#install-the-vicinity-gateway-api" title="Permalink to this headline">¶</a></h2>
+<p>We will start with simple VICINITY Gateway API installation.</p>
+<ol class="arabic simple">
+<li>Clone the github repository</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">the</span><span class="o">/</span><span class="n">directory</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">vicinityh2020</span><span class="o">/</span><span class="n">vicinity</span><span class="o">-</span><span class="n">gateway</span><span class="o">-</span><span class="n">api</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
 </div>
-<div class="section" id="install-the-vicinity-agent-optional">
-<h2>Install the VICINITY Agent (optional)<a class="headerlink" href="#install-the-vicinity-agent-optional" title="Permalink to this headline">¶</a></h2>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Compile the VICINITY Gateway API using maven</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">vicinity</span><span class="o">-</span><span class="n">gateway</span><span class="o">-</span><span class="n">api</span>
+<span class="n">mvn</span> <span class="n">clean</span> <span class="nb">compile</span> <span class="n">assembly</span><span class="p">:</span><span class="n">single</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create dedicated system user for VICINITY Gateway API</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adduser</span> <span class="o">--</span><span class="n">system</span> <span class="o">--</span><span class="n">group</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">create</span><span class="o">-</span><span class="n">home</span> <span class="o">--</span><span class="n">shell</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span> <span class="n">ogwapi</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Putt it all in the right place</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">log</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">config</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">config</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">config</span>
+<span class="n">cp</span> <span class="n">target</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">-</span><span class="n">jar</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">dependencies</span><span class="o">.</span><span class="n">jar</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">gateway</span><span class="o">.</span><span class="n">jar</span>
+<span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">ogwapi</span><span class="p">:</span><span class="n">ogwapi</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span>
+<span class="n">chmod</span> <span class="n">u</span><span class="o">+</span><span class="n">x</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">gateway</span><span class="o">.</span><span class="n">jar</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Running VICINITY Gateway API.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span>
+<span class="n">su</span> <span class="o">-</span> <span class="n">ogwapi</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;nohup java -jar gateway.jar &amp;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Checking the running API</li>
+</ol>
+<blockquote>
+<div><p>In nohup.out you should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONFIG</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">Basic</span> <span class="n">challenge</span> <span class="n">authentication</span> <span class="n">scheme</span> <span class="n">configured</span><span class="o">.</span>
+<span class="n">Sep</span> <span class="mi">08</span><span class="p">,</span> <span class="mi">2018</span> <span class="mi">2</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">45</span> <span class="n">PM</span> <span class="n">org</span><span class="o">.</span><span class="n">restlet</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">NetServerHelper</span> <span class="n">start</span>
+<span class="n">INFO</span><span class="p">:</span> <span class="n">Starting</span> <span class="n">the</span> <span class="n">internal</span> <span class="p">[</span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="p">]</span> <span class="n">server</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">8181</span>
+<span class="n">Sep</span> <span class="mi">08</span><span class="p">,</span> <span class="mi">2018</span> <span class="mi">2</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">45</span> <span class="n">PM</span> <span class="n">org</span><span class="o">.</span><span class="n">restlet</span><span class="o">.</span><span class="n">Application</span> <span class="n">start</span>
+<span class="n">INFO</span><span class="p">:</span> <span class="n">Starting</span> <span class="n">eu</span><span class="o">.</span><span class="n">bavenir</span><span class="o">.</span><span class="n">ogwapi</span><span class="o">.</span><span class="n">restapi</span><span class="o">.</span><span class="n">Api</span> <span class="n">application</span>
+<span class="n">Sep</span> <span class="mi">08</span><span class="p">,</span> <span class="mi">2018</span> <span class="mi">2</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">45</span> <span class="n">PM</span> <span class="n">org</span><span class="o">.</span><span class="n">restlet</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">ApplicationHelper</span> <span class="n">start</span>
+<span class="n">FINE</span><span class="p">:</span> <span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="n">an</span> <span class="n">application</span> <span class="n">should</span> <span class="n">be</span> <span class="n">attached</span> <span class="n">to</span> <span class="n">a</span> <span class="n">parent</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">let</span> <span class="n">application</span><span class="s1">&#39;s outbound root handle calls properly.</span>
+<span class="n">Sep</span> <span class="mi">08</span><span class="p">,</span> <span class="mi">2018</span> <span class="mi">2</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">45</span> <span class="n">PM</span> <span class="n">eu</span><span class="o">.</span><span class="n">bavenir</span><span class="o">.</span><span class="n">ogwapi</span><span class="o">.</span><span class="n">restapi</span><span class="o">.</span><span class="n">RestletThread</span> <span class="n">run</span>
+<span class="n">FINE</span><span class="p">:</span> <span class="n">HTTP</span> <span class="n">server</span> <span class="n">component</span> <span class="n">started</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="install-the-vicinity-agent">
+<h2>Install the VICINITY Agent<a class="headerlink" href="#install-the-vicinity-agent" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="register-your-device">
 <h2>Register your device<a class="headerlink" href="#register-your-device" title="Permalink to this headline">¶</a></h2>

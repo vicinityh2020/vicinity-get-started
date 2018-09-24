@@ -37,7 +37,7 @@ We will start with simple VICINITY Gateway API installation.
     mkdir /opt/ogwapi
     mkdir /opt/ogwapi/log
     mkdir /opt/ogwapi/config
-    cp -r ./config /opt/ogwapi/config
+    cp -r ./config /opt/ogwapi
     cp target/ogwapi-jar-with-dependencies.jar /opt/ogwapi/gateway.jar
     chown -R ogwapi:ogwapi /opt/ogwapi
     chmod u+x /opt/ogwapi/gateway.jar

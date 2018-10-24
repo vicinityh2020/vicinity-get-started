@@ -71,11 +71,9 @@ We will start with simple VICINITY Gateway API installation.
 Install the VICINITY Example Adapter
 -----------------------------------------------
 
-We provide very simple example Adapter as a playground for first run and testing.
+We provide very simple Adapter example as a playground for first run and testing. The Adapter example is part of the VICINITY Agent installation.
 
-Please, download prepared Adapter example from VICINITY Agent GitHub. In releases tab,
-find last release and download attached file **adapter-build-x.y.z.zip**, where
-**x.y.z** is the version of actual release. Unzip it.
+Download prepared Adapter example from VICINITY Agent GitHub. In releases tab, find last release and download attached file **adapter-build-x.y.z.zip**, where **x.y.z** is the version of actual release. Unzip it.
 
 Example Adapter exposes two **things**: *example-thing-1* and *example-thing-2*.
 You can find their thing descriptions in file

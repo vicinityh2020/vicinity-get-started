@@ -132,114 +132,112 @@ online and available via Neighbourhood Manager.
 
 Lets do this.
 
-**1. Run VICINITY Gateway API** (see above)
+1.) Run VICINITY Gateway API** (see above)
 
-**2. Run example Adapter**
+2.) Run example Adapter**
 
-::
+  ::
 
-    cd adapter-build-x.y.z
-    ./adapter.sh
+      cd adapter-build-x.y.z
+      ./adapter.sh
 
-Your Adapter is now running. In console, you should see:
+  Your Adapter is now running. In console, you should see:
 
-::
+  ::
 
-    Oct 23, 2018 2:32:36 PM org.restlet.engine.connector.NetServerHelper start
-    INFO: Starting the internal [HTTP/1.1] server on port 9998
-    Oct 23, 2018 2:32:36 PM org.restlet.Application start
-    INFO: Starting sk.intersoft.vicinity.adapter.testing.service.TestingAdapterApplication application
-    starting
+      Oct 23, 2018 2:32:36 PM org.restlet.engine.connector.NetServerHelper start
+      INFO: Starting the internal [HTTP/1.1] server on port 9998
+      Oct 23, 2018 2:32:36 PM org.restlet.Application start
+      INFO: Starting sk.intersoft.vicinity.adapter.testing.service.TestingAdapterApplication application
+      starting
 
+3.) Run Agent Service**
 
+  ::
 
-**3. Run Agent Service**
+      cd agent-build-x.y.z
+      ./agent.sh
 
-::
+  Your Agent service is now running. In console, you should see:
 
-    cd agent-build-x.y.z
-    ./agent.sh
+  ::
 
-Your Agent service is now running. In console, you should see:
+      command:
+      pid:
+      starting agent
+      agent started
 
-::
+  Agent Service logs its whole process into file:
 
-    command:
-    pid:
-    starting agent
-    agent started
+  ::
 
-Agent Service logs its whole process into file:
+      agent-build-x.y.z/logs/agent-yyyy-mm-dd.log
 
-::
-
-    agent-build-x.y.z/logs/agent-yyyy-mm-dd.log
-
-In few seconds, the startup sequence and discovery process should be completed.
-You can check your actual Agent Service configuration at endpoint
+  In few seconds, the startup sequence and discovery process should be completed.
+  You can check your actual Agent Service configuration at endpoint
 
 
-::
+  ::
 
-    GET http://localhost:9997/agent/configuration
+      GET http://localhost:9997/agent/configuration
 
-You can check it in your browser. You should see similar content
+  You can check it in your browser. You should see similar content
 
-::
+  ::
 
-    {
-      "adapters": [{
-        "adapter-id": "example-adapter",
-        "things": [
-          {
-            "adapter-infra-id": "example-adapter---!---example-thing-1",
-            "infra-id": "example-thing-1",
-            "password": "R1az6N72N7KfEvGYKVLp5f7PiS3Bv3prIfSkuyb0k+Y=",
-            "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
-            "adapter-id": "example-adapter",
-            "oid": "f9d16d9e-02ec-40bc-ad38-4b814d62ea33",
-            "adapter-oid": "example-adapter---!---f9d16d9e-02ec-40bc-ad38-4b814d62ea33"
-          },
-          {
-            "adapter-infra-id": "example-adapter---!---example-thing-2",
-            "infra-id": "example-thing-2",
-            "password": "anea2CW6UAPikNfCYp+xZLsERIF0Mxys4hvZvRy9qNk=",
-            "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
-            "adapter-id": "example-adapter",
-            "oid": "10c67501-9536-4b58-937a-804df9bdcde6",
-            "adapter-oid": "example-adapter---!---10c67501-9536-4b58-937a-804df9bdcde6"
-          }
-        ],
-        "subscribe-channels": [],
-        "open-channels": []
-      }],
-  ...
+      {
+        "adapters": [{
+          "adapter-id": "example-adapter",
+          "things": [
+            {
+              "adapter-infra-id": "example-adapter---!---example-thing-1",
+              "infra-id": "example-thing-1",
+              "password": "R1az6N72N7KfEvGYKVLp5f7PiS3Bv3prIfSkuyb0k+Y=",
+              "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
+              "adapter-id": "example-adapter",
+              "oid": "f9d16d9e-02ec-40bc-ad38-4b814d62ea33",
+              "adapter-oid": "example-adapter---!---f9d16d9e-02ec-40bc-ad38-4b814d62ea33"
+            },
+            {
+              "adapter-infra-id": "example-adapter---!---example-thing-2",
+              "infra-id": "example-thing-2",
+              "password": "anea2CW6UAPikNfCYp+xZLsERIF0Mxys4hvZvRy9qNk=",
+              "agent-id": "f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa",
+              "adapter-id": "example-adapter",
+              "oid": "10c67501-9536-4b58-937a-804df9bdcde6",
+              "adapter-oid": "example-adapter---!---10c67501-9536-4b58-937a-804df9bdcde6"
+            }
+          ],
+          "subscribe-channels": [],
+          "open-channels": []
+        }],
+    ...
 
-If you see configuration, discovery process was successfull and your example
-things were registered. Each thing obtained unique VICINITY **oid**. This is
-unique persistent identifier of your thing. Any other things in VICINITY can
-interact with other things using their VICINITY **oid**.
+  If you see configuration, discovery process was successfull and your example
+  things were registered. Each thing obtained unique VICINITY **oid**. This is
+  unique persistent identifier of your thing. Any other things in VICINITY can
+  interact with other things using their VICINITY **oid**.
 
-Following the configuration above, our example things are mapped as follows:
+  Following the configuration above, our example things are mapped as follows:
 
-**example-thing-1**
+  **example-thing-1**
 
-::
+  ::
 
-    infrastructure-id: example-thing-1
-    oid: f9d16d9e-02ec-40bc-ad38-4b814d62ea33
+      infrastructure-id: example-thing-1
+      oid: f9d16d9e-02ec-40bc-ad38-4b814d62ea33
 
 
-**example-thing-2**
+  **example-thing-2**
 
-::
+  ::
 
-    infrastructure-id: example-thing-2
-    oid: 10c67501-9536-4b58-937a-804df9bdcde6
+      infrastructure-id: example-thing-2
+      oid: 10c67501-9536-4b58-937a-804df9bdcde6
 
-If you will run this step, you will receive unique specific **oid**s for your things.
+  If you will run this step, you will receive unique specific **oid**s for your things.
 
-Now we are ready to interact with our example things.
+  Now we are ready to interact with our example things.
 
 
 -----------------------------------------------

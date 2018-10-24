@@ -88,14 +88,13 @@ Install the VICINITY Agent Service
 -----------------------------------------------
 
 We provide very Agent Service build preconfigured to work with example Adapter.
-Later, you can reconfigure of Agent Service to work with any other adapters just by changing the [Agent configuration file](https://github.com/vicinityh2020/vicinity-agent/blob/master/docs/AGENT.md)
+Later, you can reconfigure of Agent Service to work with any other adapters just by changing the `Agent configuration file  <https://github.com/vicinityh2020/vicinity-agent/blob/master/docs/AGENT.md>`_
 
 1.) Download prepared Agent Service from VICINITY Agent GitHub
-  In releases tab, find last release and download attached file **agent-build-x.y.z.zip**, where
-**x.y.z** is the version of actual release. Unzip it.
+  In releases tab, find last release and download attached file **agent-build-x.y.z.zip**, where **x.y.z** is the version of actual release. Unzip it.
 
 2.) Register access point of VICINITY Neighbourhood Manager
-  Agent needs to be authenticated to perform any registry operations in VICINITY Peer to Peer network. You can simple get credentials from VICINITY Neighbourhood Manager [Access point tab](https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Access-points)
+  Agent needs to be authenticated to perform any registry operations in VICINITY Peer to Peer network. You can simple get credentials from VICINITY Neighbourhood Manager `Access point tab <https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Access-points>`_
 
 3.) Update Agent Service credentials in configuration file
 

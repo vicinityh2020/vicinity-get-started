@@ -1,0 +1,7 @@
+# Ignored files and folders
+.Python
+bin/
+include/
+lib/
+pip-selfcheck.json
+docs/_build

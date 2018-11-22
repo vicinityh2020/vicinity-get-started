@@ -11,9 +11,9 @@ Welcome to VICINITY Get Started's documentation!
    :caption: Contents:
 
    architecture
+   neighbourhood
    vocabulary
    getstarted
-   neighbourhood
 
 Indices and tables
 ==================

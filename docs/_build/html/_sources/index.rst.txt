@@ -13,7 +13,7 @@ Welcome to VICINITY Get Started's documentation!
    architecture
    vocabulary
    getstarted
-   
+   neighbourhood
 
 Indices and tables
 ==================

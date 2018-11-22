@@ -83,10 +83,10 @@
 <li class="toctree-l1"><a class="reference internal" href="vocabulary.html">VICINITY Vocabulary</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-gateway-api">Install the VICINITY Gateway API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-agent">Install the VICINITY Agent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-your-device">Register your device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Register your device</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#read-data-from-your-device">Read data from your device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-example-adapter">Install the VICINITY Example Adapter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-vicinity-agent-service">Install the VICINITY Agent Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-your-things">Register your things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read-data-from-your-example-thing">Read data from your example thing</a></li>
 </ul>
 </li>
 </ul>
@@ -192,7 +192,7 @@
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span>
 <span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">log</span>
 <span class="n">mkdir</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">config</span>
-<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">config</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">config</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">./</span><span class="n">config</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span>
 <span class="n">cp</span> <span class="n">target</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">-</span><span class="n">jar</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">dependencies</span><span class="o">.</span><span class="n">jar</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">gateway</span><span class="o">.</span><span class="n">jar</span>
 <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">ogwapi</span><span class="p">:</span><span class="n">ogwapi</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span>
 <span class="n">chmod</span> <span class="n">u</span><span class="o">+</span><span class="n">x</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ogwapi</span><span class="o">/</span><span class="n">gateway</span><span class="o">.</span><span class="n">jar</span>
@@ -226,32 +226,179 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="install-the-vicinity-agent">
-<h2>Install the VICINITY Agent<a class="headerlink" href="#install-the-vicinity-agent" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Add VICINITY Agent installation</p>
+<div class="section" id="install-the-vicinity-example-adapter">
+<h2>Install the VICINITY Example Adapter<a class="headerlink" href="#install-the-vicinity-example-adapter" title="Permalink to this headline">¶</a></h2>
+<p>We provide very simple Adapter example as a playground for first run and testing. The Adapter example is part of the VICINITY Agent installation.</p>
+<p>Download prepared Adapter example from VICINITY Agent GitHub. In releases tab, find last release and download attached file <strong>adapter-build-x.y.z.zip</strong>, where <strong>x.y.z</strong> is the version of actual release. Unzip it.</p>
+<p>Example Adapter exposes two <strong>things</strong>: <em>example-thing-1</em> and <em>example-thing-2</em>.
+You can find their thing descriptions in file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adapter</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="n">objects</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="register-your-device">
-<h2>Register your device<a class="headerlink" href="#register-your-device" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last">Add registration of device with VICINITY Agent</p>
+<div class="section" id="install-the-vicinity-agent-service">
+<h2>Install the VICINITY Agent Service<a class="headerlink" href="#install-the-vicinity-agent-service" title="Permalink to this headline">¶</a></h2>
+<p>We provide very Agent Service build preconfigured to work with example Adapter.
+Later, you can reconfigure of Agent Service to work with any other adapters just by changing the <a class="reference external" href="https://github.com/vicinityh2020/vicinity-agent/blob/master/docs/AGENT.md">Agent configuration file</a></p>
+<dl class="docutils">
+<dt>1.) Download prepared Agent Service from VICINITY Agent GitHub</dt>
+<dd>In releases tab, find last release and download attached file <strong>agent-build-x.y.z.zip</strong>, where <strong>x.y.z</strong> is the version of actual release. Unzip it.</dd>
+<dt>2.) Register access point of VICINITY Neighbourhood Manager</dt>
+<dd>Agent needs to be authenticated to perform any registry operations in VICINITY Peer to Peer network. You can simple get credentials from VICINITY Neighbourhood Manager <a class="reference external" href="https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Access-points">Access point tab</a></dd>
+</dl>
+<p>3.) Update Agent Service credentials in configuration file</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">agents</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="n">agent</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
 </div>
+<p>Fill in correct values in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;credentials&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;agent-id&quot;</span><span class="p">:</span> <span class="s2">&quot;agent id goes here&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;agent password goes here&quot;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="id1">
-<h2>Register your device<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<p class="last">Add registration of device without VICINITY Agent</p>
+<p>Everything is now prepared for the first run.</p>
+</div></blockquote>
 </div>
+<div class="section" id="register-your-things">
+<h2>Register your things<a class="headerlink" href="#register-your-things" title="Permalink to this headline">¶</a></h2>
+<p>In the first run of complete VICINITY Node instalation, the things exposed by
+example Adapter will be registered in VICINITY and they will obtain persistent
+identifiers, under which they will be know to any other thing in VICINITY. The process
+will go as follows:</p>
+<ul class="simple">
+<li>Agent Service will run the startup sequence, which includes discovery of objects exposed by adapters attached to Agent Service.</li>
+<li>New things will be registered into VICINITY, existing will be updated, missing deleted.</li>
+<li>Agent Service ends with actual configuration on VICINITY Node, all things are discovered,</li>
+</ul>
+<p>online and available via Neighbourhood Manager.</p>
+<p>Lets do this.</p>
+<p>1.) Run VICINITY Gateway API** (see above)</p>
+<p>2.) Run example Adapter**</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">adapter</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span>
+<span class="o">./</span><span class="n">adapter</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
 </div>
-<div class="section" id="read-data-from-your-device">
-<h2>Read data from your device<a class="headerlink" href="#read-data-from-your-device" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-todo admonition" id="index-3">
-<p class="first admonition-title">Todo</p>
-<p class="last">Add VICINITY Agent installation</p>
+<p>Your Adapter is now running. In console, you should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Oct</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2018</span> <span class="mi">2</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">36</span> <span class="n">PM</span> <span class="n">org</span><span class="o">.</span><span class="n">restlet</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">NetServerHelper</span> <span class="n">start</span>
+<span class="n">INFO</span><span class="p">:</span> <span class="n">Starting</span> <span class="n">the</span> <span class="n">internal</span> <span class="p">[</span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="p">]</span> <span class="n">server</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">9998</span>
+<span class="n">Oct</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2018</span> <span class="mi">2</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">36</span> <span class="n">PM</span> <span class="n">org</span><span class="o">.</span><span class="n">restlet</span><span class="o">.</span><span class="n">Application</span> <span class="n">start</span>
+<span class="n">INFO</span><span class="p">:</span> <span class="n">Starting</span> <span class="n">sk</span><span class="o">.</span><span class="n">intersoft</span><span class="o">.</span><span class="n">vicinity</span><span class="o">.</span><span class="n">adapter</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">TestingAdapterApplication</span> <span class="n">application</span>
+<span class="n">starting</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>3.) Run Agent Service**</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">agent</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span>
+<span class="o">./</span><span class="n">agent</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Your Agent service is now running. In console, you should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command</span><span class="p">:</span>
+<span class="n">pid</span><span class="p">:</span>
+<span class="n">starting</span> <span class="n">agent</span>
+<span class="n">agent</span> <span class="n">started</span>
+</pre></div>
+</div>
+<p>Agent Service logs its whole process into file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">agent</span><span class="o">-</span><span class="n">yyyy</span><span class="o">-</span><span class="n">mm</span><span class="o">-</span><span class="n">dd</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>In few seconds, the startup sequence and discovery process should be completed.
+You can check your actual Agent Service configuration at endpoint</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9997</span><span class="o">/</span><span class="n">agent</span><span class="o">/</span><span class="n">configuration</span>
+</pre></div>
+</div>
+<p>You can check it in your browser. You should see similar content</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="s2">&quot;adapters&quot;</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">&quot;adapter-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;things&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;adapter-infra-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter---!---example-thing-1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;infra-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-thing-1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;R1az6N72N7KfEvGYKVLp5f7PiS3Bv3prIfSkuyb0k+Y=&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;agent-id&quot;</span><span class="p">:</span> <span class="s2">&quot;f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;adapter-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;oid&quot;</span><span class="p">:</span> <span class="s2">&quot;f9d16d9e-02ec-40bc-ad38-4b814d62ea33&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;adapter-oid&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter---!---f9d16d9e-02ec-40bc-ad38-4b814d62ea33&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;adapter-infra-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter---!---example-thing-2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;infra-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-thing-2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;anea2CW6UAPikNfCYp+xZLsERIF0Mxys4hvZvRy9qNk=&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;agent-id&quot;</span><span class="p">:</span> <span class="s2">&quot;f7f63ef6-fd8a-44f6-8a4a-c15f8376edaa&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;adapter-id&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;oid&quot;</span><span class="p">:</span> <span class="s2">&quot;10c67501-9536-4b58-937a-804df9bdcde6&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;adapter-oid&quot;</span><span class="p">:</span> <span class="s2">&quot;example-adapter---!---10c67501-9536-4b58-937a-804df9bdcde6&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;subscribe-channels&quot;</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="s2">&quot;open-channels&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}],</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>If you see configuration, discovery process was successfull and your example
+things were registered. Each thing obtained unique VICINITY <strong>oid</strong>. This is
+unique persistent identifier of your thing. Any other things in VICINITY can
+interact with other things using their VICINITY <strong>oid</strong>.</p>
+<p>Following the configuration above, our example things are mapped as follows:</p>
+<p><strong>example-thing-1</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">infrastructure</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">example</span><span class="o">-</span><span class="n">thing</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">oid</span><span class="p">:</span> <span class="n">f9d16d9e</span><span class="o">-</span><span class="mi">02</span><span class="n">ec</span><span class="o">-</span><span class="mi">40</span><span class="n">bc</span><span class="o">-</span><span class="n">ad38</span><span class="o">-</span><span class="mi">4</span><span class="n">b814d62ea33</span>
+</pre></div>
+</div>
+<p><strong>example-thing-2</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">infrastructure</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">example</span><span class="o">-</span><span class="n">thing</span><span class="o">-</span><span class="mi">2</span>
+<span class="n">oid</span><span class="p">:</span> <span class="mi">10</span><span class="n">c67501</span><span class="o">-</span><span class="mi">9536</span><span class="o">-</span><span class="mi">4</span><span class="n">b58</span><span class="o">-</span><span class="mi">937</span><span class="n">a</span><span class="o">-</span><span class="mi">804</span><span class="n">df9bdcde6</span>
+</pre></div>
+</div>
+<p>If you will run this step, you will receive unique specific <a href="#id1"><span class="problematic" id="id2">**</span></a>oid**s for your things.</p>
+<p>Now we are ready to interact with our example things.</p>
+</div></blockquote>
+</div>
+<div class="section" id="read-data-from-your-example-thing">
+<h2>Read data from your example thing<a class="headerlink" href="#read-data-from-your-example-thing" title="Permalink to this headline">¶</a></h2>
+<p>When your things were successfully registered, you need to enable them
+in Neighbourhood Manager user interface. It is possible to interact only
+with enabled things.</p>
+<p>To simulate interaction between thing behind the adapter and another VICINITY thing,
+we will use following Agent Service endpoint</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9997</span><span class="o">/</span><span class="n">agent</span><span class="o">/</span><span class="n">remote</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">f9d16d9e</span><span class="o">-</span><span class="mi">02</span><span class="n">ec</span><span class="o">-</span><span class="mi">40</span><span class="n">bc</span><span class="o">-</span><span class="n">ad38</span><span class="o">-</span><span class="mi">4</span><span class="n">b814d62ea33</span><span class="o">/</span><span class="n">properties</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="nb">property</span>
+<span class="n">headers</span><span class="p">:</span>
+<span class="n">adapter</span><span class="o">-</span><span class="nb">id</span><span class="o">=</span><span class="n">example</span><span class="o">-</span><span class="n">adapter</span>
+<span class="n">infrastructure</span><span class="o">-</span><span class="nb">id</span><span class="o">=</span><span class="n">example</span><span class="o">-</span><span class="n">thing</span><span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>This call means, that thing inside <strong>example-adapter</strong> with its internal identifier <strong>example-thing-2</strong> wants
+to read property of remote thing with VICINITY identifier <strong>f9d16d9e-02ec-40bc-ad38-4b814d62ea33</strong>.</p>
+<p>Use Postman to perform this call. The response to this call will look as follows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;statusCodeReason&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;echo&quot;</span><span class="p">:</span> <span class="s2">&quot;get property&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;pid&quot;</span><span class="p">:</span> <span class="s2">&quot;example-property&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;oid&quot;</span><span class="p">:</span> <span class="s2">&quot;example-thing-1&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now you are officially integrated into VICINITY and you can interact with known things.</p>
+<p>To correctly stop the Agent Service, run following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">agent</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span>
+<span class="o">./</span><span class="n">agent</span><span class="o">.</span><span class="n">sh</span> <span class="n">stop</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -274,7 +421,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Viktor Oravec.
+        &copy; Copyright 2018, Viktor Oravec
 
     </p>
   </div>
@@ -293,20 +440,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.6.2',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 

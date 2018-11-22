@@ -7,13 +7,13 @@ Welcome to VICINITY Get Started's documentation!
 ================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    architecture
+   neighbourhood
    vocabulary
    getstarted
-   neighbourhood
 
 Indices and tables
 ==================

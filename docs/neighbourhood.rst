@@ -2,6 +2,13 @@
 VICINITY Neighbourhood Manager
 ==============================
 
+------------
+Introduction
+------------
+
+Third header
+============
+
 VICINITY Neighbourhood Manager is a web-based application that creates a platform for users an their IoT infrastructures with an intuitive visual control. The users can contract added-value services that can access their devices connected to the VICINITY Platform to collect data and control them.
 
 In VICINITY Neighbourhood Manager, as in regular social networks, it is possible to establish partnerships with other users and gain read or control access to their devices. 

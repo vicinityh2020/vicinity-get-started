@@ -7,7 +7,7 @@ Welcome to VICINITY Get Started's documentation!
 ================================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 5
    :caption: Contents:
 
    architecture

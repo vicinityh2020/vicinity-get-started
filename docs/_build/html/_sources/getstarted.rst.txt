@@ -30,7 +30,7 @@ We will start with simple VICINITY Gateway API installation.
     adduser --system --group --no-create-home --shell /bin/sh ogwapi
 
 
-4. Putt it all in the right place
+4. Put it all in the right place
 
   ::
 

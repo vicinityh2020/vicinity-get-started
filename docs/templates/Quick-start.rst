@@ -2,12 +2,12 @@ This section contains the first steps that any new user should follow to start w
 The objective is to provide some guidance to non-experienced users of the platform that want to have a quick functional set-up.
 
 Pre-requisites
---------------
+##############
 
 * You have successfully `registered <https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Register-organisation>`_ a new organisation.
 
 First login
------------
+###########
 
 * The first time you login, your organisation has only one user with the administrator role. There are no access points, devices or services available at this point.
 
@@ -18,12 +18,12 @@ First login
 * Log-out and log-in again, so the change of roles will take effect.
 
 Create an access point
-----------------------
+######################
 
 * In order to be able to register devices and services, it is necessary to have access credentials for your agent/adapter. This is what we call `access point <https://github.com/vicinityh2020/vicinity-neighbourhood-manager/wiki/Access-points>`_ in the platform.
 
 Next steps
-----------
+##########
 
 * Congratulations, your account is ready to register devices and/or services. If you have not done so yet, install the agent/adapter and a gateway so your infrastructure can communicate with the platform. The access point credentials will be necessary to register your agent and afterwards, for registering devices and services.
 

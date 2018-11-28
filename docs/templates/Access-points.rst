@@ -21,7 +21,7 @@ and from this view it is possible to manage all the access points. The image bel
    Example figure
 
 Properties
-----------
+##########
 
 As we can see in the example figure there are 3 main properties.
 
@@ -36,7 +36,7 @@ Type     Indicates to which project belongs the infrastructure YES
 .. note:: This is an important field because when initialising the agent/adapter, this ID will be used in the authentication credentials together with the password. The password will be introduced by the system integrator when creating the gateway entity and will not be stored by the web application.
 
 Relationships
--------------
+#############
 
 The access point belongs to an organisation and at the same time can have several items (devices and services).
 
@@ -49,7 +49,7 @@ Items    All the smart components and services
 In the example picture it is possible to see the count of items for each infrastructure, in addition, each item has in the profile the name and AGID of its agent/adapter. For system integrators using the Open Gateway API there are calls that return all items registered under the agent/adapter among other interesting options.
 
 Manage
-------
+######
 
 Here we will focus on the highlighted area of the example picture. Those are the actions that can be done over the infrastructure.
 

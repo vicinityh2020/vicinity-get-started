@@ -12,7 +12,7 @@ now, an administrator can remove or change the roles of a user.
     * A infrastructure operator cannot be removed until all contracts it is responsible for are either moved to other infrastructure operator or cancelled.
 
 Remove user
------------
+###########
 
 It is possible to remove users from the organisation profile, under the tab role management.
 
@@ -20,7 +20,7 @@ It is possible to remove users from the organisation profile, under the tab role
    :align: center
 
 Change roles
-------------
+############
 
 As mentioned, only administrators can add/remove roles. Otherwise the process is simple and it is located under the organisation profile.
 

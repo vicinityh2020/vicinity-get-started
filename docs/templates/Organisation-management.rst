@@ -2,7 +2,7 @@ Besides updating properties there are some other aspects of an
 organisation that can be managed:
 
 Organisations view
-------------------
+##################
 
 It is one of the tabs in the sidebar menu. It allows to see which
 organisations exist in the platform and to filter them by friends and
@@ -12,7 +12,7 @@ not friends.
    :align: center
 
 Friendships
------------
+###########
 
 Any user can request to establish a friendship between its organisation
 and any other. There are 5 possible actions during the partnership
@@ -54,7 +54,7 @@ You decide to stop a partnership request.
    :align: center
 
 Remove organisation
--------------------
+###################
 
 Users with the administrator role can proceed to remove an organisation
 from the organisation profile.

@@ -5,7 +5,7 @@ them can play one or several roles. Managing infrastructures, services
 or the organisation account are some of the tasks.
 
 Properties
-----------
+##########
 
 ============ ================================================= ======
 Property     Description                                       Update
@@ -31,7 +31,7 @@ updated by clicking over it.
    :align: center
 
 Relationships
--------------
+#############
 
 The user is linked to other entities as previously mentioned.
 
@@ -58,7 +58,7 @@ below how:
    :align: center
 
 Roles
------
+#####
 
 There are 6 user roles in the platform:
 

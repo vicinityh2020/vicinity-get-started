@@ -3,7 +3,7 @@ This section describes the item entity. In a real infrastructure, an item can be
 All the items need an adapter/agent and a gateway to be integrated in the platform. Once registered, users with service provider or device owner roles will be responsible for the services and devices respectively.
 
 Properties
-----------
+##########
 
 In the table is possible to see the most relevant properties, for those which are possible to update there will be a separate sub-section in the last section of this page ("Manage").
 
@@ -30,7 +30,7 @@ Status     Enabled/Disabled                       YES
    :height: 600px
 
 Relationships
--------------
+#############
 
 The items belong to a gateway and to a user. It can have contracts and audits.
 
@@ -42,7 +42,7 @@ Audits    Most relevant events of the item (History)
 ========= ==========================================
 
 Manage
-------
+######
 
 See the platform items In the sidebar menu, there are two tabs for the items: Devices (Orange widget) and services (Yellow widget). These views show your items, public items and items of your friends that are flagged as "visible for friends". There are as well filtering options.
 
@@ -66,7 +66,7 @@ In the service widget there is also a green action button in the case that the s
    Service widget
 
 Status & visibility
--------------------
+###################
 
 An item can go through several status and visibility levels, see the table below to understand some of the possible actions and effects in the item lifecycle.
 
@@ -122,7 +122,7 @@ To change the visibility go to the item profile and use the option highlighted. 
    :height: 600px
 
 Move an item
-------------
+############
 
 It is possible to change the owner or gateway of an item without interfering existing contracts or doing any additional changes. For that it is necessary to be the current owner of the device or an organisation administrator. Nevertheless, there are some conditions that have to be met:
 

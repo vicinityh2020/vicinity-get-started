@@ -3,7 +3,7 @@ The organisation is the main entity in the platform. Under the organisation ther
 To characterise an organisation there is a series of properties and relationships.
 
 Properties
-----------
+##########
 
 ============ ==================================== ======
 Property     Description                          Update
@@ -25,7 +25,7 @@ Some of the properties can be modified/updated. To do so navigate to the organis
    :align: center
 
 Relationships
--------------
+#############
 
 The organisation is linked to other entities as previously mentioned.
 

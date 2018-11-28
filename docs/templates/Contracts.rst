@@ -30,7 +30,7 @@ In order to create a contract we need to follow these steps:
         * The items involved in the contract can be managed individually, but only by their owners.
 
 Properties
-----------
+##########
 
 In the table is possible to see the most relevant properties, for those which are possible to update there will be a separate sub-section in the last section of this page ("Manage").
 
@@ -53,7 +53,7 @@ Type          Right now, only service request                       NO
     * Flag indicating if the terms and conditions were accepted. Only the IoT Provider and the Service Provider need to approve the T&C on behalf of the rest of users. However, each user can decide if its devices are included in the contract.
 
 Relationships
--------------
+#############
 
 Each item and user involved in a contract has information of it stored in an array of contracts.
 
@@ -72,7 +72,7 @@ contractingParty ID of the organisation of the other side of the contract       
 ================ ======================================================================= ======
 
 Main views
-----------
+##########
 
 *Request contract*
 
@@ -117,7 +117,7 @@ To access this view users with "device owner", "service provider" or "IoT Operat
    :height: 500px
 
 Manage
-------
+######
 
 *Create a contract*
 
@@ -170,7 +170,7 @@ Removing (red cross) a device, deletes all links of the device with the contract
    :height: 200px
 
 Update items in the contract
-----------------------------
+############################
 
 A system integrator may update devices or services in the infrastructure, and these items might be involved in some contracts. This could be an issue, since the updated item might have new properties or actions that were not included in the terms of conditions of previously existing contracts. To cope with this problem, the update process modifies the contracts in the following manner:
 

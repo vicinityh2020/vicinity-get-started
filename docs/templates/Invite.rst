@@ -6,7 +6,7 @@ In order to initiate an invitation you should click in an icon located at the to
    :align: center
 
 Invite a new organisation
--------------------------
+#########################
 
 * After providing an organisation name and valid mail, a mail will be sent and the administrator of the new organisation will follow a process similar to the regular registration except the administrator of the platform will not need to validate the registration request.
 
@@ -14,7 +14,7 @@ Invite a new organisation
    :align: center
 
 Invite a new user under your organisation
------------------------------------------
+#########################################
 
 * After providing a user name and valid mail, a mail will be sent and the new user will follow a process similar to the regular registration except the administrator of the platform will not need to validate the registration request. After registering the new user will appear under the organisation that invited it.
 

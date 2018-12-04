@@ -11,6 +11,7 @@ Welcome to VICINITY Get Started's documentation!
    :caption: Contents:
 
    architecture
+   open-gateway-api
    neighbourhood
    vocabulary
    getstarted

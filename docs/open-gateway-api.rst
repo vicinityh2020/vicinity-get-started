@@ -1,3 +1,7 @@
+
+VICINITY Open Gateway API
+*************************
+
 Introduction
 ============
 

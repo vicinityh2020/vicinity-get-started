@@ -146,15 +146,16 @@ install your running instance of the OGWAPI (although it can be, of
 course):
 
   ::
+
     $ cd /path/to/the/directory
     $ git clone https://github.com/vicinityh2020/vicinity-gateway-api.git
-  ::
 
 You should now see the following directory structure. If you just need
 to install the OGWAPI (and not building it yourself), the important
 directories are in bold:
 
   ::
+
     ./
     ../
     .classpath
@@ -169,7 +170,6 @@ directories are in bold:
     .settings/
     src/←- Source files.
     target/←- This is where you find pre-built JAR executable (or your own build).
-  ::
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `Building the OGWAPI from source
@@ -199,9 +199,9 @@ Once you made and tested your changes from the Eclipse, you can make a
 runnable binary by using Maven like this:
 
   ::
+
     $ cd /path/to/your/repository
     $ mvn clean package
-  ::
 
 The result of your new build is in the ‘target’ directory in the
 repository directory tree – ogwapi-jar-with-dependencies.jar.
@@ -225,8 +225,8 @@ If none applies to you, you can create a dedicated system user named
 ‘ogwapi’ like this (for this you need to be root):
 
   ::
+
     # adduser --system --group --no-create-home --shell /bin/sh ogwapi
-  ::
 
 2.1.1.4 Putting it all in the right place
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -237,32 +237,32 @@ You have to create the directory, then copy the necessary files into it
 and change permissions. Start with creating it:
 
   ::
+
     # mkdir /opt/ogwapi
-  ::
 
 Now copy necessary files – when you are installing the OGWAPI from the
 git repositroy, only two files are needed to be copied – the binary JAR
 file and the configuration directory.
 
   ::
+
     # cp -r /path/to/the/repository/config /opt/ogwapi/
-  ::
 
 The OGWAPI JAR file may have a cumbersome name, however it gets
 distributed like that in order to know which version you are using. You
 can rename it now to your liking.
 
   ::
+
     # cp /path/to/the/repository/target/ogwapi-jar-with-dependencies.jar /opt/ogwapi/gateway.jar
-  ::
 
 Now make sure, that the running directory has the right owner and the
 JAR file is executable:
 
   ::
+
     # chown -R ogwapi:ogwapi /opt/ogwapi
     # chmod u+x /opt/ogwapi/gateway.jar
-  ::
 
 Also, you need to decide, where you want to store the logs that are
 produced by a running gateway. You can set this parameter later in the
@@ -272,14 +272,13 @@ this case, let’s say that we want to keep them together.
 The final directory tree should look like this:
 
   ::
-root@themachine:/opt/ogwapi# ls -l
-total 9132
-drwxr-xr-x 4 ogwapi ogwapi 4096 feb 27 16:43 ./
-drwxr-xr-x 5 root root 4096 feb 27 13:39 ../
-drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:41 config/
--rwxr--r-- 1 ogwapi ogwapi 9331984 feb 27 13:41 gateway.jar\*
-drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:52 log/
-  ::
+    root@themachine:/opt/ogwapi# ls -l
+    total 9132
+    drwxr-xr-x 4 ogwapi ogwapi 4096 feb 27 16:43 ./
+    drwxr-xr-x 5 root root 4096 feb 27 13:39 ../
+    drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:41 config/
+    -rwxr--r-- 1 ogwapi ogwapi 9331984 feb 27 13:41 gateway.jar\*
+    drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:52 log/
 
 First part, the installation, is now done, you can head for the
 `configuration section <#Configuration>`__.
@@ -708,14 +707,14 @@ repositories, enter the installation directory and issue the following
 command:
 
   ::
+
     $nohup java -jar ogwapi-jar-with-dependencies.jar &
-  ::
 
 or
 
   ::
+
     # su - ogwapi -c "nohup java -jar ogwapi-jar-with-dependencies.jar &"
-  ::
 
 The su part will make sure the command is run as the ogwapi user (the
 space character between dash and user name is not a typo!). Then the
@@ -868,6 +867,7 @@ that were encountered on the way. Therefore, the OGWAPI since v0.6.3
 will mostly follow this format when returning data:
 
   ::
+
     {
       "error": false, <- boolean indicating whether any error occured during operation
       "statusCode": 201, <- integer code, compliant with HTTP status codes
@@ -879,7 +879,6 @@ will mostly follow this format when returning data:
         }
       ]
     }
-  ::
 
 In this chain there are three places where an error can occur and the
 OGWAPI can clearly distinguish among the sources:
@@ -1141,6 +1140,7 @@ None.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1148,7 +1148,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 3.5.1.2 Logout
 ^^^^^^^^^^^^^^
@@ -1173,6 +1172,7 @@ None.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1180,7 +1180,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 3.5.2 Consumption interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1237,6 +1236,7 @@ name will be overwritten.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1248,7 +1248,6 @@ Returns:
         }
       ]
     }
-  ::
 
 IMPORTANT: Reception of this request will cause the receiving OGWAPI to
 fire following request to an Agent / Adapter:
@@ -1292,6 +1291,7 @@ A JSON with a new value must be sent as a payload.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1307,7 +1307,6 @@ Returns:
         }
       ]
     }
-  ::
 
 IMPORTANT: Reception of this request will cause the receiving OGWAPI to
 fire following request to an Agent / Adapter:
@@ -1377,6 +1376,7 @@ Therefore, any parameter with the same name will be overwritten.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 201,
@@ -1388,7 +1388,6 @@ Returns:
         }
       ]
     }
-  ::
 
 IMPORTANT: The gateway on the other side will automatically queue
 requests and will pick one at a time, in a standard FIFO fashion, for
@@ -1442,6 +1441,7 @@ Running task without updated state will look like this (note the null
 value for the return value):
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1458,7 +1458,6 @@ value for the return value):
         }
       ]
     }
-  ::
 
 If the running task was updated by the executing object in the meantime
 (see `Updating task status <#Updating%20task%20status>`__), and an
@@ -1466,6 +1465,7 @@ intermediate result was put into the body during update, the result will
 look like this:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1482,7 +1482,6 @@ look like this:
         }
       ]
     }
-  ::
 
 After the task is finished (or failed), the executing object will update
 the status and values accordingly (see `Updating task
@@ -1490,6 +1489,7 @@ status <#Updating%20task%20status>`__) and the return value after
 requesting task status will return something like this:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1507,7 +1507,6 @@ requesting task status will return something like this:
         }
       ]
     }
-  ::
 
 If a task was canceled by the requesting side, the task will be marked
 by status 'finished', and 'cancelled' string will be added as a return
@@ -1515,6 +1514,7 @@ value. See the status of a task that was cancelled while still pending
 in the execution queue.
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1529,7 +1529,6 @@ in the execution queue.
         }
       ]
     }
-  ::
 
 
 3.5.2.7 Cancel a task in progress
@@ -1564,6 +1563,7 @@ Therefore, any parameter with the same name will be overwritten.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1571,7 +1571,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 IMPORTANT: Reception of this request will cause the receiving OGWAPI to
 fire following request to an Agent / Adapter:
@@ -1633,6 +1632,7 @@ task will see the updated value.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1640,16 +1640,15 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 Imagine we issue update with the 'status' parameter set to 'running' and
 following body (there can be anything else):
 
   ::
+
     {
       "progress": 56
     }
-  ::
 
 This will tell the OGWAPI that the object is still executing given
 action and its progress is at 56%. If the remote object (presumably the
@@ -1657,6 +1656,7 @@ action issuer) will ask for task status at this point (see step 3), this
 is what it gets in return:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1673,7 +1673,6 @@ is what it gets in return:
         }
       ]
     }
-  ::
 
 There are no strict rules of what can be put into "returnValue", i.e.
 into the JSON object during update, however it should be in line with
@@ -1709,6 +1708,7 @@ Returns:
 JSON with a list of OIDs (object Ids).
 
   ::
+
     {
       "objects": [
         {
@@ -1725,7 +1725,6 @@ JSON with a list of OIDs (object Ids).
         }
       ]
     }
-  ::
 
 3.5.3.2 Retrieve a thing description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1783,6 +1782,7 @@ given Agent, and the system – network and servers – are keeping track
 of.
 
   ::
+
     {
       "error": false,
       "message": [
@@ -1836,7 +1836,6 @@ of.
         }
       ]
     }
-  ::
 
 3.5.4 Exposing interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1866,6 +1865,7 @@ Parameters / payload:
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1873,7 +1873,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 3.5.4.2 Send an event to subscribed objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1902,6 +1901,7 @@ JSON containing the event.
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1909,7 +1909,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 IMPORTANT: Reception of an event will cause the receiving OGWAPI to fire
 following request to an Agent / Adapter:
@@ -1947,6 +1946,7 @@ http://<gateway IP>:<port>/api/events/{eid}
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -1954,7 +1954,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 3.5.4.4 List events generated by an object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2008,6 +2007,7 @@ Returns:
 A JSON with a status of event channel.
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -2019,7 +2019,6 @@ A JSON with a status of event channel.
         }
       ]
     }
-  ::
 
 3.5.4.6 Subscribe for event reception
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2047,6 +2046,7 @@ Parameters / payload:
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -2054,7 +2054,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 3.5.4.7 Unsubscribe from the event reception
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2081,6 +2080,7 @@ Parameters / payload:
 Returns:
 
   ::
+
     {
       "error": false,
       "statusCode": 200,
@@ -2088,7 +2088,6 @@ Returns:
       "contentType": "application/json",
       "message": []
     }
-  ::
 
 3.5.5 Registry interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2119,6 +2118,7 @@ Returns:
 JSON with new generated OIDs and credentials.
 
   ::
+
     {
       "error": false,
       "message": [
@@ -2132,7 +2132,6 @@ JSON with new generated OIDs and credentials.
         }
       ]
     }
-  ::
 
 3.5.5.2 Update existing set of objects - heavyweight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2158,6 +2157,7 @@ Parameters / payload:
 As a payload, a JSON with device TDs must be sent.
 
   ::
+
     {
       "adid":"6c8bf31e-a4ea-fd46-2bb3-6b24fbad9749",
       "thingDescriptions":[
@@ -2235,13 +2235,13 @@ As a payload, a JSON with device TDs must be sent.
         }
       ]
     }
-  ::
 
 Returns:
 
 JSON with new generated OIDs and credentials.
 
   ::
+
     {
       "error": false,
       "message": [
@@ -2252,7 +2252,6 @@ JSON with new generated OIDs and credentials.
         }
       ]
     }
-  ::
 
 3.5.5.3 Update existing set of objects - lightweight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2278,6 +2277,7 @@ Parameters / payload:
 As a payload, a JSON with device TDs must be sent.
 
   ::
+
     {
       "adid": "3f43a0d2-a241-4618-9e96-bc704130ea44",
       "thingDescriptions": [
@@ -2292,13 +2292,13 @@ As a payload, a JSON with device TDs must be sent.
           "events": [] }
       ]
     }
-  ::
 
 Returns:
 
 JSON with new generated OIDs and credentials.
 
   ::
+
     {
       "error": false,
       "message": [
@@ -2309,7 +2309,6 @@ JSON with new generated OIDs and credentials.
         }
       ]
     }
-  ::
 
 3.5.5.4 Delete a set of objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2333,17 +2332,18 @@ Parameters / payload:
 As a payload, a JSON with device Ids must be sent.
 
   ::
+
     {
       "agid" : "6c8bf31e-a4ea-d64f-2bb3-6b24fbad9749",
       "oids" : [
         "df6f13c2-a616-9d4f-23b2-3242f228ff5b"
       ]
     }
-  ::
 
 Returns:
 
   ::
+
     {
       "error": false,
       "message": {
@@ -2356,7 +2356,6 @@ Returns:
         ]
       }
     }
-  ::
 
 3.5.6 Query interface
 ~~~~~~~~~~~~~~~~~~~~~
@@ -2379,6 +2378,7 @@ http://<gateway IP>:<port>/api/search/sparql
 Parameters / payload:
 
   ::
+
     prefix wot: <http://iot.linkeddata.es/def/wot#>
     prefix core: <http://iot.linkeddata.es/def/core#>
     prefix foaf: <http://xmlns.com/foaf/0.1/>
@@ -2394,7 +2394,6 @@ Parameters / payload:
       ?sensors a adp:ActivityTracker .
       ?sensors wot:thingName ?sensorName .
     }
-  ::
 
 Returns:
 

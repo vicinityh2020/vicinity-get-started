@@ -73,6 +73,9 @@ Neighbourhood manager Web UI, that lets you choose which devices are to
 be visible for which other devices and create partnerships akin to
 social network friendships.
 
+.. image:: images/ogwapi/OGWAPI_interaction2.png
+
+
 2 Open Gateway API installation and configuration
 =================================================
 
@@ -142,44 +145,31 @@ Usually, this is not the same directory, as the one where you want to
 install your running instance of the OGWAPI (although it can be, of
 course):
 
-$ cd /path/to/the/directory
-
-$ git clone https://github.com/vicinityh2020/vicinity-gateway-api.git
+  ::
+    $ cd /path/to/the/directory
+    $ git clone https://github.com/vicinityh2020/vicinity-gateway-api.git
+  ::
 
 You should now see the following directory structure. If you just need
 to install the OGWAPI (and not building it yourself), the important
 directories are in bold:
 
-./
-
-../
-
-.classpath
-
-config/←- Sample OGWAPI configuration file. Also, when you run it from
-an IDE, the file inside is the actual valid config.
-
-docs/←- Javadoc, Swagger, and this Integrator handbook.
-
-.git/←- Git configuration.
-
-LICENSE←- License file.
-
-log/←- When you run it from an IDE, logs are by default stored here. You
-can ignore it otherwise.
-
-pom.xml←- Maven configuration.
-
-.project←- Eclipse IDE project directory.
-
-README.md←- Roughly the same information as here + changelog.
-
-.settings/
-
-src/←- Source files.
-
-target/←- This is where you find pre-built JAR executable (or your own
-build).
+  ::
+    ./
+    ../
+    .classpath
+    config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.
+    docs/←- Javadoc, Swagger, and this Integrator handbook.
+    .git/←- Git configuration.
+    LICENSE←- License file.
+    log/←- When you run it from an IDE, logs are by default stored here. You can ignore it otherwise.
+    pom.xml←- Maven configuration.
+    .project←- Eclipse IDE project directory.
+    README.md←- Roughly the same information as here + changelog.
+    .settings/
+    src/←- Source files.
+    target/←- This is where you find pre-built JAR executable (or your own build).
+  ::
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `Building the OGWAPI from source
@@ -208,9 +198,10 @@ where you cloned the repository to your machine.
 Once you made and tested your changes from the Eclipse, you can make a
 runnable binary by using Maven like this:
 
-$ cd /path/to/your/repository
-
-$ mvn clean package
+  ::
+    $ cd /path/to/your/repository
+    $ mvn clean package
+  ::
 
 The result of your new build is in the ‘target’ directory in the
 repository directory tree – ogwapi-jar-with-dependencies.jar.
@@ -233,7 +224,9 @@ There are two exceptions from this rule though:
 If none applies to you, you can create a dedicated system user named
 ‘ogwapi’ like this (for this you need to be root):
 
-# adduser --system --group --no-create-home --shell /bin/sh ogwapi
+  ::
+    # adduser --system --group --no-create-home --shell /bin/sh ogwapi
+  ::
 
 2.1.1.4 Putting it all in the right place
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -243,27 +236,33 @@ to be run from. Lets say, you want to run the OGWAPI from /opt/ogwapi.
 You have to create the directory, then copy the necessary files into it
 and change permissions. Start with creating it:
 
-# mkdir /opt/ogwapi
+  ::
+    # mkdir /opt/ogwapi
+  ::
 
 Now copy necessary files – when you are installing the OGWAPI from the
 git repositroy, only two files are needed to be copied – the binary JAR
 file and the configuration directory.
 
-# cp -r /path/to/the/repository/config /opt/ogwapi/
+  ::
+    # cp -r /path/to/the/repository/config /opt/ogwapi/
+  ::
 
 The OGWAPI JAR file may have a cumbersome name, however it gets
 distributed like that in order to know which version you are using. You
 can rename it now to your liking.
 
-# cp /path/to/the/repository/target/ogwapi-jar-with-dependencies.jar
-/opt/ogwapi/gateway.jar
+  ::
+    # cp /path/to/the/repository/target/ogwapi-jar-with-dependencies.jar /opt/ogwapi/gateway.jar
+  ::
 
 Now make sure, that the running directory has the right owner and the
 JAR file is executable:
 
-# chown -R ogwapi:ogwapi /opt/ogwapi
-
-# chmod u+x /opt/ogwapi/gateway.jar
+  ::
+    # chown -R ogwapi:ogwapi /opt/ogwapi
+    # chmod u+x /opt/ogwapi/gateway.jar
+  ::
 
 Also, you need to decide, where you want to store the logs that are
 produced by a running gateway. You can set this parameter later in the
@@ -272,19 +271,15 @@ this case, let’s say that we want to keep them together.
 
 The final directory tree should look like this:
 
+  ::
 root@themachine:/opt/ogwapi# ls -l
-
 total 9132
-
 drwxr-xr-x 4 ogwapi ogwapi 4096 feb 27 16:43 ./
-
 drwxr-xr-x 5 root root 4096 feb 27 13:39 ../
-
 drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:41 config/
-
 -rwxr--r-- 1 ogwapi ogwapi 9331984 feb 27 13:41 gateway.jar\*
-
 drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:52 log/
+  ::
 
 First part, the installation, is now done, you can head for the
 `configuration section <#Configuration>`__.
@@ -704,17 +699,23 @@ in the first place. If you installed it via a package manager, the
 standard service call is available, as for other services on your
 machine.
 
-# service ogwapi start \| stop \| restart
+  ::
+    # service ogwapi start \| stop \| restart
+  ::
 
 On the other hand, when you installed the OGWAPI manually from the Git
 repositories, enter the installation directory and issue the following
 command:
 
-$nohup java -jar ogwapi-jar-with-dependencies.jar &
+  ::
+    $nohup java -jar ogwapi-jar-with-dependencies.jar &
+  ::
 
 or
 
-# su - ogwapi -c "nohup java -jar ogwapi-jar-with-dependencies.jar &"
+  ::
+    # su - ogwapi -c "nohup java -jar ogwapi-jar-with-dependencies.jar &"
+  ::
 
 The su part will make sure the command is run as the ogwapi user (the
 space character between dash and user name is not a typo!). Then the
@@ -835,6 +836,9 @@ the endpoints, please read on.
 3.2.1 Error propagation
 ~~~~~~~~~~~~~~~~~~~~~~~
 
+.. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt0.png
+Normal communication between two IoT infrastructures.
+
 One of the last things before you get your hands dirty with integrating
 your infrastructure, is understanding the error propagation. From the
 general `overview section <#Overview>`__ we can see, that using the
@@ -855,34 +859,27 @@ means you entered wrong credentials and 5XX that the OGWAPI could not
 digest what you fed it with (reasons may vary and you have to see the
 logs for actual reasons).
 
-The new error propagation mechanism uses what we internally call a
+.. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt1.png
+Example of error originating within your local infrastructure.
+
+The error propagation mechanism uses what we internally call a
 Status message to display both return values/results as well as errors
 that were encountered on the way. Therefore, the OGWAPI since v0.6.3
 will mostly follow this format when returning data:
 
-{
-
-"error": false, <- boolean indicating whether any error occured during
-operation
-
-"statusCode": 201, <- integer code, compliant with HTTP status codes
-
-"statusCodeReason": "Created. New task added to the queue.", <- string
-reason for the code
-
-"contentType": "application/json",
-
-"message": [ <- data itself, can be none or multiple JSONs
-
-{
-
-"taskId": "8659fe94-1998-4178-920f-e8a188e707be"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false, <- boolean indicating whether any error occured during operation
+      "statusCode": 201, <- integer code, compliant with HTTP status codes
+      "statusCodeReason": "Created. New task added to the queue.", <- string reason for the code
+      "contentType": "application/json",
+      "message": [ <- data itself, can be none or multiple JSONs
+        {
+          "taskId": "8659fe94-1998-4178-920f-e8a188e707be"
+        }
+      ]
+    }
+  ::
 
 In this chain there are three places where an error can occur and the
 OGWAPI can clearly distinguish among the sources:
@@ -941,6 +938,13 @@ the HTTP response from the Agent / Adapter if there was no error, or if
 there was an error that can be reported. Generally the usual culprit
 that does not fit this category is a timeout of the request to Agent /
 Adapter, that will be reported by the remote OGWAPI.
+
+.. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt2.png
+Example of an error in the P2P network.
+
+
+.. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt3.png
+Example of an error in the remote IoT infrastructure.
 
 3.1 Object discovery and registration
 -------------------------------------
@@ -1136,19 +1140,15 @@ None.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Login successfull.",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Login successfull.",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 3.5.1.2 Logout
 ^^^^^^^^^^^^^^
@@ -1172,19 +1172,15 @@ None.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Logout successfull.",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Logout successfull.",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 3.5.2 Consumption interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1240,27 +1236,19 @@ name will be overwritten.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"value": 42
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "value": 42
+        }
+      ]
+    }
+  ::
 
 IMPORTANT: Reception of this request will cause the receiving OGWAPI to
 fire following request to an Agent / Adapter:
@@ -1303,35 +1291,23 @@ A JSON with a new value must be sent as a payload.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK",
-
-"contentType": "application/json"
-
-"message": [
-
-{
-
-"data": {
-
-"echo": "set property on custom endpoint",
-
-"oid": "device-1"
-
-},
-
-"status": "success"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK",
+      "contentType": "application/json"
+      "message": [
+        {
+          "data": {
+            "echo": "set property on custom endpoint",
+            "oid": "device-1"
+          },
+          "status": "success"
+        }
+      ]
+    }
+  ::
 
 IMPORTANT: Reception of this request will cause the receiving OGWAPI to
 fire following request to an Agent / Adapter:
@@ -1400,27 +1376,19 @@ Therefore, any parameter with the same name will be overwritten.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 201,
-
-"statusCodeReason": "Created. New task added to the queue.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"taskId": "8659fe94-1998-4178-920f-e8a188e707be"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 201,
+      "statusCodeReason": "Created. New task added to the queue.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "taskId": "8659fe94-1998-4178-920f-e8a188e707be"
+        }
+      ]
+    }
+  ::
 
 IMPORTANT: The gateway on the other side will automatically queue
 requests and will pick one at a time, in a standard FIFO fashion, for
@@ -1473,147 +1441,96 @@ during execution), finished (the task is done).
 Running task without updated state will look like this (note the null
 value for the return value):
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Task status retrieved.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"taskId": "dfe35433-9a34-4c8e-ae92-04d0c4ba5cf6",
-
-"status": "running",
-
-"createdAt": "2018-10-03 13:26:06", <- this is the time of creation
-
-"startTime": "2018-10-03 13:26:07", <- this is when it started to be
-executed
-
-"totalTime": 15529, <- running time in milliseconds
-
-"returnValue": null
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Task status retrieved.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "taskId": "dfe35433-9a34-4c8e-ae92-04d0c4ba5cf6",
+          "status": "running",
+          "createdAt": "2018-10-03 13:26:06", <- this is the time of creation
+          "startTime": "2018-10-03 13:26:07", <- this is when it started to be executed
+          "totalTime": 15529, <- running time in milliseconds
+          "returnValue": null
+        }
+      ]
+    }
+  ::
 
 If the running task was updated by the executing object in the meantime
 (see `Updating task status <#Updating%20task%20status>`__), and an
 intermediate result was put into the body during update, the result will
 look like this:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Task status retrieved.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"taskId": "048d4788-243f-4fa5-a9cd-02fe5c554077",
-
-"status": "running",
-
-"createdAt": "2018-10-04 14:13:16",
-
-"startTime": "2018-10-04 14:13:17",
-
-"totalTime": 255541,
-
-"returnValue": "{\\n\\t\\"value\\": \\"computing\\"\\n}"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Task status retrieved.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "taskId": "048d4788-243f-4fa5-a9cd-02fe5c554077",
+          "status": "running",
+          "createdAt": "2018-10-04 14:13:16",
+          "startTime": "2018-10-04 14:13:17",
+          "totalTime": 255541,
+          "returnValue": "{\\n\\t\\"value\\": \\"computing\\"\\n}"
+        }
+      ]
+    }
+  ::
 
 After the task is finished (or failed), the executing object will update
 the status and values accordingly (see `Updating task
 status <#Updating%20task%20status>`__) and the return value after
 requesting task status will return something like this:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Task status retrieved.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"taskId": "6d1df4af-c017-411b-a389-862c26f7639f",
-
-"status": "finished",
-
-"createdAt": "2018-10-04 14:13:27",
-
-"startTime": "1970-01-01 01:00:00",
-
-"endTime": "2018-10-04 14:18:19",
-
-"totalTime": 1538655499076,
-
-"returnValue": "{\\n\\t\\"value\\": \\"computed\\"\\n}"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Task status retrieved.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "taskId": "6d1df4af-c017-411b-a389-862c26f7639f",
+          "status": "finished",
+          "createdAt": "2018-10-04 14:13:27",
+          "startTime": "1970-01-01 01:00:00",
+          "endTime": "2018-10-04 14:18:19",
+          "totalTime": 1538655499076,
+          "returnValue": "{\\n\\t\\"value\\": \\"computed\\"\\n}"
+        }
+      ]
+    }
+  ::
 
 If a task was canceled by the requesting side, the task will be marked
 by status 'finished', and 'cancelled' string will be added as a return
 value. See the status of a task that was cancelled while still pending
 in the execution queue.
 
-{
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Task status retrieved.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "taskId": "6d1df4af-c017-411b-a389-862c26f7639f",
+          "status": "finished",
+          "createdAt": "2018-10-04 14:13:27",
+          "returnValue": "canceled"
+        }
+      ]
+    }
+  ::
 
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Task status retrieved.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"taskId": "6d1df4af-c017-411b-a389-862c26f7639f",
-
-"status": "finished",
-
-"createdAt": "2018-10-04 14:13:27",
-
-"returnValue": "canceled"
-
-}
-
-]
-
-}
 
 3.5.2.7 Cancel a task in progress
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1646,19 +1563,15 @@ Therefore, any parameter with the same name will be overwritten.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Canceled pending task",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Canceled pending task",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 IMPORTANT: Reception of this request will cause the receiving OGWAPI to
 fire following request to an Agent / Adapter:
@@ -1719,66 +1632,48 @@ task will see the updated value.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Running task of action device-1-aid-1 was
-updated to running.",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Running task of action device-1-aid-1 was updated to running.",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 Imagine we issue update with the 'status' parameter set to 'running' and
 following body (there can be anything else):
 
-{
-
-"progress": 56
-
-}
+  ::
+    {
+      "progress": 56
+    }
+  ::
 
 This will tell the OGWAPI that the object is still executing given
 action and its progress is at 56%. If the remote object (presumably the
 action issuer) will ask for task status at this point (see step 3), this
 is what it gets in return:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Task status retrieved.",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"taskId": "048d4788-243f-4fa5-a9cd-02fe5c554077",
-
-"status": "running",
-
-"createdAt": "2018-10-04 14:13:16",
-
-"startTime": "2018-10-04 14:13:17",
-
-"totalTime": 255541,
-
-"returnValue": "{\\n\\t\\"progress\\": 56\\n}"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Task status retrieved.",
+      "contentType": "application/json",
+      "message": [
+        {
+          "taskId": "048d4788-243f-4fa5-a9cd-02fe5c554077",
+          "status": "running",
+          "createdAt": "2018-10-04 14:13:16",
+          "startTime": "2018-10-04 14:13:17",
+          "totalTime": 255541,
+          "returnValue": "{\\n\\t\\"progress\\": 56\\n}"
+        }
+      ]
+    }
+  ::
 
 There are no strict rules of what can be put into "returnValue", i.e.
 into the JSON object during update, however it should be in line with
@@ -1813,37 +1708,24 @@ Returns:
 
 JSON with a list of OIDs (object Ids).
 
-{
-
-"objects": [
-
-{
-
-"oid": "f8209add-a6e4-40b7-a8f4-05e5494e14de"
-
-},
-
-{
-
-"oid": "d91606b7-f9fd-4815-40b7-fdb4be2abc88"
-
-},
-
-{
-
-"oid": "d9440add-030f-40b7-a6e4-05e5494e14de"
-
-},
-
-{
-
-"oid": "5367da12-4da1-4be3-9fc7-bad866685d27"
-
-}
-
-]
-
-}
+  ::
+    {
+      "objects": [
+        {
+          "oid": "f8209add-a6e4-40b7-a8f4-05e5494e14de"
+        },
+        {
+          "oid": "d91606b7-f9fd-4815-40b7-fdb4be2abc88"
+        },
+        {
+          "oid": "d9440add-030f-40b7-a6e4-05e5494e14de"
+        },
+        {
+          "oid": "5367da12-4da1-4be3-9fc7-bad866685d27"
+        }
+      ]
+    }
+  ::
 
 3.5.3.2 Retrieve a thing description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1900,113 +1782,61 @@ A JSON with a list of objects that are already registered under the
 given Agent, and the system – network and servers – are keeping track
 of.
 
-{
-
-"error": false,
-
-"message": [
-
-{
-
-"id": {
-
-"\_id": "5c65fa894a5d55ad3ad4e028",
-
-"info": {
-
-"adapter-id": "adapter-smartfridge",
-
-"name": "Smart refrigerator 42",
-
-"oid": "8ca6b797-8ab9-4035-bdda-82ec6345d559",
-
-"type": "core:Device",
-
-"actions": [],
-
-"properties": [
-
-{
-
-"pid": "device\_status",
-
-"read\_link": {
-
-"output": {
-
-"field": [
-
-{
-
-"schema": {
-
-"type": "string"
-
-},
-
-"name": "device\_status"
-
-}
-
-],
-
-"type": "object"
-
-},
-
-"href": "/objects/{oid}/properties/{pid}"
-
-},
-
-"monitors": "adapters:DeviceStatus"
-
-},
-
-],
-
-"events": [
-
-{
-
-"output": {
-
-"field": [
-
-{
-
-"schema": {
-
-"type": "string"
-
-},
-
-"name": "door"
-
-}
-
-],
-
-"type": "object"
-
-},
-
-"eid": "door",
-
-"monitors": "adapters:FridgeDoorStatus"
-
-}
-
-]
-
-}
-
-}
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "message": [
+        {
+          "id": {
+            "\_id": "5c65fa894a5d55ad3ad4e028",
+            "info": {
+            "adapter-id": "adapter-smartfridge",
+            "name": "Smart refrigerator 42",
+            "oid": "8ca6b797-8ab9-4035-bdda-82ec6345d559",
+            "type": "core:Device",
+            "actions": [],
+            "properties": [
+              {
+                "pid": "device\_status",
+                "read\_link": {
+                  "output": {
+                    "field": [
+                      {
+                        "schema": {
+                          "type": "string"
+                        },
+                        "name": "device\_status"
+                      }
+                    ],
+                    "type": "object"
+                  },
+                  "href": "/objects/{oid}/properties/{pid}"
+                },
+                "monitors": "adapters:DeviceStatus"
+              },
+            ],
+            "events": [
+              {
+                "output": {
+                  "field": [
+                    {
+                      "schema": {
+                        "type": "string"
+                      },
+                      "name": "door"
+                    }
+                  ],
+                  "type": "object"
+                },
+                "eid": "door",
+                "monitors": "adapters:FridgeDoorStatus"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ::
 
 3.5.4 Exposing interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2035,20 +1865,15 @@ Parameters / payload:
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Object '6d1df4af-c017-411b-a389-862c26f7639f'
-changed the activity of event channel 'event-1' to true",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Object '6d1df4af-c017-411b-a389-862c26f7639f' changed the activity of event channel 'event-1' to true",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 3.5.4.2 Send an event to subscribed objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2076,20 +1901,15 @@ JSON containing the event.
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Event event-1 was successfully distributed to 1
-out of 1 subscribers.",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Event event-1 was successfully distributed to 1 out of 1 subscribers.",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 IMPORTANT: Reception of an event will cause the receiving OGWAPI to fire
 following request to an Agent / Adapter:
@@ -2126,20 +1946,15 @@ http://<gateway IP>:<port>/api/events/{eid}
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Object ‘a42f7d9c-fbb5-50e7-c43c-cbe97496b24f'
-changed the activity of event channel 'event-1' to false",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Object ‘a42f7d9c-fbb5-50e7-c43c-cbe97496b24f' changed the activity of event channel 'event-1' to false",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 3.5.4.4 List events generated by an object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2192,27 +2007,19 @@ Returns:
 
 A JSON with a status of event channel.
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. ",
-
-"contentType": "application/json",
-
-"message": [
-
-{
-
-"active": true
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. ",
+      "contentType": "application/json",
+      "message": [
+        {
+          "active": true
+        }
+      ]
+    }
+  ::
 
 3.5.4.6 Subscribe for event reception
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2239,19 +2046,15 @@ Parameters / payload:
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Subscribed.",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Subscribed.",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 3.5.4.7 Unsubscribe from the event reception
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2277,19 +2080,15 @@ Parameters / payload:
 
 Returns:
 
-{
-
-"error": false,
-
-"statusCode": 200,
-
-"statusCodeReason": "OK. Unsubscribed.",
-
-"contentType": "application/json",
-
-"message": []
-
-}
+  ::
+    {
+      "error": false,
+      "statusCode": 200,
+      "statusCodeReason": "OK. Unsubscribed.",
+      "contentType": "application/json",
+      "message": []
+    }
+  ::
 
 3.5.5 Registry interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2319,31 +2118,21 @@ Returns:
 
 JSON with new generated OIDs and credentials.
 
-{
-
-"error": false,
-
-"message": [
-
-{
-
-"oid": "18bf26b5-ac19-7749-af3bb-83df916660a",
-
-"password": "secret=",
-
-"infrastructure-id": "adapter-smart\_oven\_11",
-
-"nm-id": "74b4018710945bc273cdcee2",
-
-"name": "Smart oven 11",
-
-"error": false
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "message": [
+        {
+          "oid": "18bf26b5-ac19-7749-af3bb-83df916660a",
+          "password": "secret=",
+          "infrastructure-id": "adapter-smart\_oven\_11",
+          "nm-id": "74b4018710945bc273cdcee2",
+          "name": "Smart oven 11",
+          "error": false
+        }
+      ]
+    }
+  ::
 
 3.5.5.2 Update existing set of objects - heavyweight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2368,183 +2157,102 @@ Parameters / payload:
 
 As a payload, a JSON with device TDs must be sent.
 
-{
-
-"adid":"6c8bf31e-a4ea-fd46-2bb3-6b24fbad9749",
-
-"thingDescriptions":[
-
-{
-
-"oid": "3a9be827-df2d-ba48-11ae-3dd40f62d841",
-
-"name" : "bulbTest",
-
-"type" : "Sensor",
-
-"infrastructure-id": "test",
-
-"actions" : [],
-
-"properties" : [
-
-{
-
-"output" : {
-
-"datatype" : "int",
-
-"units" : "percentage(0-100)"
-
-},
-
-"read\_links" : [
-
-{
-
-"href" : "/objects/bulb2/properties/brightness",
-
-"mediatype" : "application/json"
-
-}
-
-],
-
-"pid" : "Brightness",
-
-"write\_links" : [
-
-{
-
-"href" : "/objects/bulb2/properties/brightness",
-
-"mediatype" : "application/json"
-
-}
-
-],
-
-"monitors" : "Luminance",
-
-"writable" : "true"
-
-},
-
-{
-
-"output" : {
-
-"datatype" : "int",
-
-"units" : "#rgb"
-
-},
-
-"read\_links" : [
-
-{
-
-"href" : "/objects/bulb2/properties/color",
-
-"mediatype" : "application/json"
-
-}
-
-],
-
-"pid" : "LightColor",
-
-"write\_links" : [
-
-{
-
-"href" : "/objects/bulb2/properties/color",
-
-"mediatype" : "application/json"
-
-}
-
-],
-
-"monitors" : "LightColor",
-
-"writable" : "true"
-
-},
-
-{
-
-"output" : {
-
-"datatype" : "double",
-
-"units" : "watt"
-
-},
-
-"read\_links" : [
-
-{
-
-"href" : "/objects/bulb2/properties/consumption",
-
-"mediatype" : "application/json"
-
-}
-
-],
-
-"pid" : "MeanPowerConsumption",
-
-"write\_links" : [
-
-{
-
-"href" : "/objects/bulb2/properties/consumption",
-
-"mediatype" : "application/json"
-
-}
-
-],
-
-"monitors" : "MeanPowerConsumption",
-
-"writable" : "false"
-
-}
-
-]
-
-}
-
-]
-
-}
+  ::
+    {
+      "adid":"6c8bf31e-a4ea-fd46-2bb3-6b24fbad9749",
+      "thingDescriptions":[
+        {
+          "oid": "3a9be827-df2d-ba48-11ae-3dd40f62d841",
+          "name" : "bulbTest",
+          "type" : "Sensor",
+          "infrastructure-id": "test",
+          "actions" : [],
+          "properties" : [
+            {
+              "output" : {
+                "datatype" : "int",
+                "units" : "percentage(0-100)"
+              },
+              "read\_links" : [
+                {
+                  "href" : "/objects/bulb2/properties/brightness",
+                  "mediatype" : "application/json"
+                }
+              ],
+              "pid" : "Brightness",
+              "write\_links" : [
+                {
+                  "href" : "/objects/bulb2/properties/brightness",
+                  "mediatype" : "application/json"
+                }
+              ],
+              "monitors" : "Luminance",
+              "writable" : "true"
+            },
+            {
+              "output" : {
+                "datatype" : "int",
+                "units" : "#rgb"
+              },
+              "read\_links" : [
+                {
+                  "href" : "/objects/bulb2/properties/color",
+                  "mediatype" : "application/json"
+                }
+              ],
+              "pid" : "LightColor",
+              "write\_links" : [
+                {
+                  "href" : "/objects/bulb2/properties/color",
+                  "mediatype" : "application/json"
+                }
+              ],
+              "monitors" : "LightColor",
+              "writable" : "true"
+            },
+            {
+              "output" : {
+                "datatype" : "double",
+                "units" : "watt"
+              },
+              "read\_links" : [
+                {
+                  "href" : "/objects/bulb2/properties/consumption",
+                  "mediatype" : "application/json"
+                }
+              ],
+              "pid" : "MeanPowerConsumption",
+              "write\_links" : [
+                {
+                  "href" : "/objects/bulb2/properties/consumption",
+                  "mediatype" : "application/json"
+                }
+              ],
+              "monitors" : "MeanPowerConsumption",
+              "writable" : "false"
+            }
+          ]
+        }
+      ]
+    }
+  ::
 
 Returns:
 
 JSON with new generated OIDs and credentials.
 
-{
-
-"error": false,
-
-"message": [
-
-{
-
-"oid": "71446b30-bb90-874e-6b91-dbd9f68a5e0d",
-
-"password": "secret=",
-
-"infrastructure-id": "test"
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "message": [
+        {
+          "oid": "71446b30-bb90-874e-6b91-dbd9f68a5e0d",
+          "password": "secret=",
+          "infrastructure-id": "test"
+        }
+      ]
+    }
+  ::
 
 3.5.5.3 Update existing set of objects - lightweight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2569,57 +2277,39 @@ Parameters / payload:
 
 As a payload, a JSON with device TDs must be sent.
 
-{
-
-"adid": "3f43a0d2-a241-4618-9e96-bc704130ea44",
-
-"thingDescriptions": [
-
-{
-
-"name": "updDevice",
-
-"oid": "da5476ea-256b-7c4b-c289-32e8d7733804",
-
-"type": "core:Device",
-
-"infrastructure-id": "testtest",
-
-"adapter-id": "newAdaptId",
-
-"actions": [],
-
-"properties": [],
-
-"events": [] }
-
-]
-
-}
+  ::
+    {
+      "adid": "3f43a0d2-a241-4618-9e96-bc704130ea44",
+      "thingDescriptions": [
+        {
+          "name": "updDevice",
+          "oid": "da5476ea-256b-7c4b-c289-32e8d7733804",
+          "type": "core:Device",
+          "infrastructure-id": "testtest",
+          "adapter-id": "newAdaptId",
+          "actions": [],
+          "properties": [],
+          "events": [] }
+      ]
+    }
+  ::
 
 Returns:
 
 JSON with new generated OIDs and credentials.
 
-{
-
-*"error": false,*
-
-"message": [
-
-{
-
-"oid": "da5476ea-256b-7c4b-c289-32e8d7733804",
-
-"infrastructure-id": "testtest",
-
-"success": true
-
-}
-
-]
-
-}
+  ::
+    {
+      "error": false,
+      "message": [
+        {
+          "oid": "da5476ea-256b-7c4b-c289-32e8d7733804",
+          "infrastructure-id": "testtest",
+          "success": true
+        }
+      ]
+    }
+  ::
 
 3.5.5.4 Delete a set of objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2642,43 +2332,31 @@ Parameters / payload:
 
 As a payload, a JSON with device Ids must be sent.
 
-{
-
-"agid" : "6c8bf31e-a4ea-d64f-2bb3-6b24fbad9749",
-
-"oids" : [
-
-"df6f13c2-a616-9d4f-23b2-3242f228ff5b"
-
-]
-
-}
+  ::
+    {
+      "agid" : "6c8bf31e-a4ea-d64f-2bb3-6b24fbad9749",
+      "oids" : [
+        "df6f13c2-a616-9d4f-23b2-3242f228ff5b"
+      ]
+    }
+  ::
 
 Returns:
 
-{
-
-"error": false,
-
-"message": {
-
-"error": false,
-
-"message": [
-
-{
-
-"value": "df6f13c2-a616-9d4f-23b2-3242f228ff5b",
-
-"result": "Success"
-
-}
-
-]
-
-}
-
-}
+  ::
+    {
+      "error": false,
+      "message": {
+        "error": false,
+        "message": [
+          {
+            "value": "df6f13c2-a616-9d4f-23b2-3242f228ff5b",
+            "result": "Success"
+          }
+        ]
+      }
+    }
+  ::
 
 3.5.6 Query interface
 ~~~~~~~~~~~~~~~~~~~~~
@@ -2700,35 +2378,23 @@ http://<gateway IP>:<port>/api/search/sparql
 
 Parameters / payload:
 
-prefix wot: <http://iot.linkeddata.es/def/wot#>
-
-prefix core: <http://iot.linkeddata.es/def/core#>
-
-prefix foaf: <http://xmlns.com/foaf/0.1/>
-
-prefix sosa: <http://www.w3.org/ns/sosa/>
-
-prefix geo: <http://www.w3.org/2003/01/geo/wgs84\_pos#>
-
-prefix ssn: <http://www.w3.org/ns/ssn/>
-
-prefix adp: <http://iot.linkeddata.es/def/adapters#>
-
-prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-prefix map: <http://iot.linkeddata.es/def/wot-mappings#>
-
-select distinct ?sensor ?sensorName ?literal where {
-
-?things a wot:Thing .
-
-?things core:represents ?sensors .
-
-?sensors a adp:ActivityTracker .
-
-?sensors wot:thingName ?sensorName .
-
-}
+  ::
+    prefix wot: <http://iot.linkeddata.es/def/wot#>
+    prefix core: <http://iot.linkeddata.es/def/core#>
+    prefix foaf: <http://xmlns.com/foaf/0.1/>
+    prefix sosa: <http://www.w3.org/ns/sosa/>
+    prefix geo: <http://www.w3.org/2003/01/geo/wgs84\_pos#>
+    prefix ssn: <http://www.w3.org/ns/ssn/>
+    prefix adp: <http://iot.linkeddata.es/def/adapters#>
+    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    prefix map: <http://iot.linkeddata.es/def/wot-mappings#>
+    select distinct ?sensor ?sensorName ?literal where {
+      ?things a wot:Thing .
+      ?things core:represents ?sensors .
+      ?sensors a adp:ActivityTracker .
+      ?sensors wot:thingName ?sensorName .
+    }
+  ::
 
 Returns:
 

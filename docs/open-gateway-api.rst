@@ -1,5 +1,5 @@
 
-VICINITY Open Gateway API TEST
+VICINITY Open Gateway API
 *************************
 
 Introduction
@@ -159,17 +159,17 @@ directories are in bold:
     ./
     ../
     .classpath
-    config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.
-    docs/←- Javadoc, Swagger, and this Integrator handbook.
+    *config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.*
+    *docs/←- Javadoc, Swagger, and this Integrator handbook.*
     .git/←- Git configuration.
     LICENSE←- License file.
     log/←- When you run it from an IDE, logs are by default stored here. You can ignore it otherwise.
     pom.xml←- Maven configuration.
     .project←- Eclipse IDE project directory.
-    README.md←- Roughly the same information as here + changelog.
+    *README.md←- Roughly the same information as here + changelog.*
     .settings/
     src/←- Source files.
-    target/←- This is where you find pre-built JAR executable (or your own build).
+    *target/←- This is where you find pre-built JAR executable (or your own build).*
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `Building the OGWAPI from source

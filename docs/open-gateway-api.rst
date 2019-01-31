@@ -1,5 +1,5 @@
 
-VICINITY Open Gateway API
+VICINITY Open Gateway API TEST
 *************************
 
 Introduction

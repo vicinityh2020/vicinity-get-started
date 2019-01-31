@@ -159,22 +159,21 @@ directories are in bold:
     ./
     ../
     .classpath
-    **config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.**
-    **docs/←- Javadoc, Swagger, and this Integrator handbook.**
+    config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.
+    docs/←- Javadoc, Swagger, and this Integrator handbook.
     .git/←- Git configuration.
     LICENSE←- License file.
     log/←- When you run it from an IDE, logs are by default stored here. You can ignore it otherwise.
     pom.xml←- Maven configuration.
     .project←- Eclipse IDE project directory.
-    **README.md←- Roughly the same information as here + changelog.**
+    README.md←- Roughly the same information as here + changelog.
     .settings/
     src/←- Source files.
-    **target/←- This is where you find pre-built JAR executable (or your own build).**
+    target/←- This is where you find pre-built JAR executable (or your own build).
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
-to section `2.1.1.2 Building the OGWAPI from source codes`_. `Building the OGWAPI from source codes <2.1.1.2 Building the OGWAPI from source codes>`_ Otherwise,
-skip that section and continue with section about `Creating a dedicated
-system user <#Creating%20a%20dedicated%20system%20user>`__.
+to section `2.1.1.2 Building the OGWAPI from source codes`_. Otherwise,
+skip that section and continue with section about  `2.1.1.3 Creating a dedicated system user`_.
 
 2.1.1.2 Building the OGWAPI from source codes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -280,7 +279,7 @@ The final directory tree should look like this:
     drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:52 log/
 
 First part, the installation, is now done, you can head for the
-`configuration section <#Configuration>`__.
+`2.2 Configuration`_.
 
 2.1.2 Linux – .deb installation package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -298,8 +297,7 @@ To be done.
 Detailed documentation is yet to be tested. However, as the software is
 written in plain Java, based on the OpenJDK JVM, the building from
 source code approach should be working, provided you execute equivalent
-steps as described in the `Building the OGWAPI from source
-codes <#Building%20the%20OGWAPI%20from%20source%20codes>`__.
+steps as described in the `2.1.1.2 Building the OGWAPI from source codes`_.
 
 2.1.5 Windows
 ~~~~~~~~~~~~~
@@ -308,7 +306,7 @@ Detailed documentation is yet to be tested. However, as the software is
 written in plain Java, based on the OpenJDK JVM, the building from
 source code approach should be working, provided you execute equivalent
 steps as described in the `Building the OGWAPI from source
-codes <#Building%20the%20OGWAPI%20from%20source%20codes>`__.
+codes `2.1.1.2 Building the OGWAPI from source codes`_.
 
 2.2 Configuration
 -----------------
@@ -449,16 +447,14 @@ In order to receive requests from the P2P network, it is necessary to
 set an IP address and a port of your local Agent, that will process
 these requests. If you don’t have an Agent running, you can state the IP
 address and port of your Adapter, provided it can correctlyprocess the
-requests (see the section `Integration and adapter
-development <#Integration%20and%20adapter%20development>`__). The
+requests (see the section `4 Integration and adapter development`_). The
 parametersto change are *connector→restAgentConnector→agentIP* and
 *connector→restAgentConnector→agentPort.*
 
 You can always play around with the other parameters. Their meaning and
 how they affect the system behaviour is (should be) explained in-line in
 the configuration file. If that is not the case, take a look at the
-section `List of configuration parameters and their
-meaning <#List%20of%20configuration%20parameters%20and%20their%20meaning>`__.
+section `2.2.3 List of configuration parameters and their meaning`_.
 
 2.2.3 List of configuration parameters and their meaning
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -983,9 +979,7 @@ functionality that lets you read and set properties of remote objects
 and to run actions on them. Needless to say that proper permissions need
 to be set in the Neighbourhood Manager Web first. The instructions in
 this section are just a logical sequence that has to be done, for the
-particular endpoint description please read the section `Complete
-description of OGWAPI
-endpoints <#Complete%20description%20of%20OGWAPI%20endpoints>`__.
+particular endpoint description please read the section `3.5 Complete description of Open Gateway API endpoints`_.
 
 **Properties** are scalar values of an object in IoT ecosystem. As an
 example we can take a smart light bulb, which properties can include
@@ -2593,8 +2587,7 @@ response code reason.
 ----------------------------------
 
 When utilizing the exposing interface, we are used to think about the
-data chain as a distribution of events. In the `section dedicated to
-that interface <#Exposing%20interface>`__, we discussed the easy ways of
+data chain as a distribution of events. In the `3.5.4 Exposing interface`_, we discussed the easy ways of
 how to enable the channel (if the device is the one that generates the
 event), how to send it and how to subscribe for reception of such
 events.

@@ -173,7 +173,7 @@ directories are in bold:
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `Building the OGWAPI from source
-codes <#Building%20the%20OGWAPI%20from%20source%20codes>`_. Otherwise,
+codes <#2.1.1.2%20Building%20the%20OGWAPI%20from%20source%20codes>`_. Otherwise,
 skip that section and continue with section about `Creating a dedicated
 system user <#Creating%20a%20dedicated%20system%20user>`__.
 

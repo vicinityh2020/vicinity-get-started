@@ -172,12 +172,12 @@ directories are in bold:
     **target/←- This is where you find pre-built JAR executable (or your own build).**
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
-to section `Building the OGWAPI from source
-codes :ref:`2112`_. Otherwise,
+to section Building the OGWAPI from source
+codes :ref:`my-reference-label`. Otherwise,
 skip that section and continue with section about `Creating a dedicated
 system user <#Creating%20a%20dedicated%20system%20user>`__.
 
-.. _2112:
+.. _my-reference-label:
 2.1.1.2 Building the OGWAPI from source codes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

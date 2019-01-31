@@ -159,24 +159,25 @@ directories are in bold:
     ./
     ../
     .classpath
-    *config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.*
-    *docs/←- Javadoc, Swagger, and this Integrator handbook.*
+    **config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.**
+    **docs/←- Javadoc, Swagger, and this Integrator handbook.**
     .git/←- Git configuration.
     LICENSE←- License file.
     log/←- When you run it from an IDE, logs are by default stored here. You can ignore it otherwise.
     pom.xml←- Maven configuration.
     .project←- Eclipse IDE project directory.
-    *README.md←- Roughly the same information as here + changelog.*
+    **README.md←- Roughly the same information as here + changelog.**
     .settings/
     src/←- Source files.
-    *target/←- This is where you find pre-built JAR executable (or your own build).*
+    **target/←- This is where you find pre-built JAR executable (or your own build).**
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `Building the OGWAPI from source
-codes <#2.1.1.2%20Building%20the%20OGWAPI%20from%20source%20codes>`_. Otherwise,
+codes :ref:`2112`_. Otherwise,
 skip that section and continue with section about `Creating a dedicated
 system user <#Creating%20a%20dedicated%20system%20user>`__.
 
+.. _2112:
 2.1.1.2 Building the OGWAPI from source codes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

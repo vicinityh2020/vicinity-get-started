@@ -943,7 +943,7 @@ Example of an error in the P2P network.
 .. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt3.png
 Example of an error in the remote IoT infrastructure.
 
-3.1 Object discovery and registration
+3.3 Object discovery and registration
 -------------------------------------
 
 Having an Agent connected into the OGWAPI as an additional layer brings
@@ -973,7 +973,7 @@ following steps:
 The set of new devices will be registered on our servers and you should
 receive their freshly generated credentials in the response.
 
-3.2 Data consumption
+3.4 Data consumption
 --------------------
 
 Data consumption is, along with object exposing, the functionality that
@@ -982,7 +982,7 @@ functionality that lets you read and set properties of remote objects
 and to run actions on them. Needless to say that proper permissions need
 to be set in the Neighbourhood Manager Web first. The instructions in
 this section are just a logical sequence that has to be done, for the
-particular endpoint description please read the section `3.5 Complete description of Open Gateway API endpoints`_.
+particular endpoint description please read the section `3.7 Complete description of Open Gateway API endpoints`_.
 
 **Properties** are scalar values of an object in IoT ecosystem. As an
 example we can take a smart light bulb, which properties can include
@@ -1036,7 +1036,7 @@ called in order to do this job:
    aid}/tasks/{tid from step 3} – cancels the task if desired
    (optional…).
 
-3.3 Exposing your IoT objects
+3.5 Exposing your IoT objects
 -----------------------------
 
 For now we have been discussing how to poll a remote object for data,
@@ -1086,7 +1086,7 @@ sent to PUT /api/events/{eid} on an OGWAPI on its side, then distributed
 to subscribed objects, each of which needs to implement PUT
 /api/objects/{oid}/events/{eid}.
 
-3.4 Search and querying the network
+3.6 Search and querying the network
 -----------------------------------
 
 A SPARQL query can be used to poll the network of your befriended
@@ -1095,17 +1095,17 @@ JSON in the request body. The endpoint is:
 
 POST /api/search/sparql
 
-3.5 Complete description of Open Gateway API endpoints
+3.7 Complete description of Open Gateway API endpoints
 ------------------------------------------------------
 
 This section describes each endpoint provided by the OGWAPI software.
 Again, the endpoints are, for the sake of clarity, divided into groups
 according to the interface they are providing.
 
-3.5.1 Authentication interface
+3.7.1 Authentication interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.5.1.1 Login
+3.7.1.1 Login
 ^^^^^^^^^^^^^
 
 Description:
@@ -1145,7 +1145,7 @@ Returns:
       "message": []
     }
 
-3.5.1.2 Logout
+3.7.1.2 Logout
 ^^^^^^^^^^^^^^
 
 Description:
@@ -1177,10 +1177,10 @@ Returns:
       "message": []
     }
 
-3.5.2 Consumption interface
+3.7.2 Consumption interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.5.2.1 Get a list of properties of a remote object
+3.7.2.1 Get a list of properties of a remote object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1203,7 +1203,7 @@ Returns:
 
 To be done.
 
-3.5.2.2 Get a value of a property
+3.7.2.2 Get a value of a property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1256,7 +1256,7 @@ the source identifier. Therefore, an endpoint needs to be implemented on
 the Agent / Adapter capable of receiving such requests and retrieving
 given property from the object.
 
-3.5.2.3 Set a new value to a property
+3.7.2.3 Set a new value to a property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1315,7 +1315,7 @@ the source identifier. Therefore, an endpoint needs to be implemented on
 the Agent / Adapter capable of receiving such requests setting given
 property on the object.
 
-3.5.2.4 Get a list of actions of the remote object
+3.7.2.4 Get a list of actions of the remote object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1338,7 +1338,7 @@ Returns:
 
 To be done.
 
-3.5.2.5 Execute an action
+3.7.2.5 Execute an action
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1398,7 +1398,7 @@ the source identifier. Therefore, an endpoint needs to be implemented on
 the Agent / Adapter capable of receiving such requests and starting
 given action on the object.
 
-3.5.2.6 Retrieve the status or a value of a given task
+3.7.2.6 Retrieve the status or a value of a given task
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1527,7 +1527,7 @@ in the execution queue.
     }
 
 
-3.5.2.7 Cancel a task in progress
+3.7.2.7 Cancel a task in progress
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1582,7 +1582,7 @@ to Agent / Adapter – the TID is important only for OGWAPI, the Agent /
 Adapter only knows about the action that is being executed, it has no
 notion of several tasks queued on the OGWAPI.
 
-3.5.2.8 Updating task status
+3.7.2.8 Updating task status
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1674,10 +1674,10 @@ There are no strict rules of what can be put into "returnValue", i.e.
 into the JSON object during update, however it should be in line with
 your TD file, so the others know what can be expected.
 
-3.5.3 Discovery interface
+3.7.3 Discovery interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.5.3.1 Get a list of all visible objects
+3.7.3.1 Get a list of all visible objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1722,7 +1722,7 @@ JSON with a list of OIDs (object Ids).
       ]
     }
 
-3.5.3.2 Retrieve a thing description
+3.7.3.2 Retrieve a thing description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1747,7 +1747,7 @@ Returns:
 A thing description of an object, that should also include what actions,
 properties, events, etc. it supports.
 
-3.5.3.3 Retrieve a list of objects connected to this agent
+3.7.3.3 Retrieve a list of objects connected to this agent
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1833,10 +1833,10 @@ of.
       ]
     }
 
-3.5.4 Exposing interface
+3.7.4 Exposing interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.5.4.1 Activate an event channel
+3.7.4.1 Activate an event channel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1870,7 +1870,7 @@ Returns:
       "message": []
     }
 
-3.5.4.2 Send an event to subscribed objects
+3.7.4.2 Send an event to subscribed objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1917,7 +1917,7 @@ the source identifier. Therefore, an endpoint needs to be implemented on
 the Agent / Adapter capable of receiving such requests and processing
 the event for adjacent object.
 
-3.5.4.3 De-activates the event channel
+3.7.4.3 De-activates the event channel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1951,7 +1951,7 @@ Returns:
       "message": []
     }
 
-3.5.4.4 List events generated by an object
+3.7.4.4 List events generated by an object
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -1976,7 +1976,7 @@ Returns:
 A JSON with a list of events that can be generated by a given object and
 which of them are active.
 
-3.5.4.5 Retrieve a current status of an event channel
+3.7.4.5 Retrieve a current status of an event channel
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2016,7 +2016,7 @@ A JSON with a status of event channel.
       ]
     }
 
-3.5.4.6 Subscribe for event reception
+3.7.4.6 Subscribe for event reception
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2051,7 +2051,7 @@ Returns:
       "message": []
     }
 
-3.5.4.7 Unsubscribe from the event reception
+3.7.4.7 Unsubscribe from the event reception
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2085,10 +2085,10 @@ Returns:
       "message": []
     }
 
-3.5.5 Registry interface
+3.7.5 Registry interface
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.5.5.1 Register a set of new objects
+3.7.5.1 Register a set of new objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2129,7 +2129,7 @@ JSON with new generated OIDs and credentials.
       ]
     }
 
-3.5.5.2 Update existing set of objects - heavyweight
+3.7.5.2 Update existing set of objects - heavyweight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2249,7 +2249,7 @@ JSON with new generated OIDs and credentials.
       ]
     }
 
-3.5.5.3 Update existing set of objects - lightweight
+3.7.5.3 Update existing set of objects - lightweight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2306,7 +2306,7 @@ JSON with new generated OIDs and credentials.
       ]
     }
 
-3.5.5.4 Delete a set of objects
+3.7.5.4 Delete a set of objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2353,10 +2353,10 @@ Returns:
       }
     }
 
-3.5.6 Query interface
+3.7.6 Query interface
 ~~~~~~~~~~~~~~~~~~~~~
 
-3.5.6.1 SPARQL search
+3.7.6.1 SPARQL search
 ^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -2590,7 +2590,7 @@ response code reason.
 ----------------------------------
 
 When utilizing the exposing interface, we are used to think about the
-data chain as a distribution of events. In the `3.5.4 Exposing interface`_, we discussed the easy ways of
+data chain as a distribution of events. In the `3.7.4 Exposing interface`_, we discussed the easy ways of
 how to enable the channel (if the device is the one that generates the
 event), how to send it and how to subscribe for reception of such
 events.

@@ -171,6 +171,10 @@ directories are in bold:
     src/←- Source files.
     target/←- This is where you find pre-built JAR executable (or your own build).
 
+.. raw:: html
+
+   <div>Some stuff <pre>some <b>bold</b> text</pre>...</div>
+
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `2.1.1.2 Building the OGWAPI from source codes`_. Otherwise,
 skip that section and continue with section about  `2.1.1.3 Creating a dedicated system user`_.

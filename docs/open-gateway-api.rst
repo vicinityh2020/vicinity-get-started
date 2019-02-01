@@ -309,8 +309,7 @@ steps as described in the `2.1.1.2 Building the OGWAPI from source codes`_.
 Detailed documentation is yet to be tested. However, as the software is
 written in plain Java, based on the OpenJDK JVM, the building from
 source code approach should be working, provided you execute equivalent
-steps as described in the `Building the OGWAPI from source
-codes `2.1.1.2 Building the OGWAPI from source codes`_.
+steps as described in the `2.1.1.2 Building the OGWAPI from source codes`_.
 
 2.2 Configuration
 -----------------

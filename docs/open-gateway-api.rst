@@ -838,7 +838,7 @@ Normal communication between two IoT infrastructures.
 
 One of the last things before you get your hands dirty with integrating
 your infrastructure, is understanding the error propagation. From the
-general `overview section <#Overview>`__ we can see, that using the
+general `1 Open Gateway API overview`_ we can see, that using the
 OGWAPI divides the communication path to three logical sections, where a
 communication error can occur:
 

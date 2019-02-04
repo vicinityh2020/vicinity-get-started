@@ -87,6 +87,6 @@ The integration of IoT infrastructure in VICINITY includes following steps which
 #. Testing of devices accessibility
 
 
-.. [#f1] For detail description of the VICINITY architecture see: http://vicinity2020.eu/vicinity/content/d16-architectural-design-10
+.. [#f1] For detail description of the VICINITY architecture see: https://vicinity2020.eu/vicinity/sites/default/files/documents/vicinity_d1_6_architectural_design_1.0_0.pdf
 .. [#f2] https://www.w3.org/WoT/IG/
 .. [#f3] VICINITY Gateway API is described using Open API standard and due implementation stage of the VICINITY project it is subject of change, for conceptual understanding of the API see: https://app.swaggerhub.com/apis/intersoft.sk/vicinity-adapter/1.0.0

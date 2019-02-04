@@ -29,4 +29,4 @@ Next steps
 
 * For more info:
     * `VICINITY Agent <https://github.com/vicinityh2020/vicinity-agent>`_
-    * `VICINITY Gateway API <https://github.com/vicinityh2020/vicinity-gateway-api/tree/master/doc/Integrator%20handbook>`_
+    * `VICINITY Gateway API <https://github.com/vicinityh2020/vicinity-gateway-api>`_

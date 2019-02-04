@@ -1205,42 +1205,42 @@ A JSON with a list of properties.
 
    ::
    
-   {
-     "error": false,
-     "statusCode": 200,
-     "statusCodeReason": "OK. Properties retrieved.",
-     "contentType": "application/json",
-     "message": [
-       {
-         "properties": [
-           {
-             "pid": "brightness",
-             "monitors": "Brightness",
-             "read_link": {
-               "href": "/device/{oid}/property/{pid}",
-               "output": {
-                 "type": "object",
-                 "field": [
-                   {
-                     "name": "property",
-                     "schema": {
-                       "type": "string"
-                     }
-                   },
-                   {
-                     "name": "value",
-                     "schema": {
-                       "type": "integer"
-                     }
-                   }
-                 ]
-               }
-             }
-           }
-         ]
-       }
-     ]
-   }
+      {
+        "error": false,
+        "statusCode": 200,
+        "statusCodeReason": "OK. Properties retrieved.",
+        "contentType": "application/json",
+        "message": [
+          {
+            "properties": [
+              {
+                "pid": "brightness",
+                "monitors": "Brightness",
+                "read_link": {
+                  "href": "/device/{oid}/property/{pid}",
+                  "output": {
+                    "type": "object",
+                    "field": [
+                      {
+                        "name": "property",
+                        "schema": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "name": "value",
+                        "schema": {
+                          "type": "integer"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
 
 3.7.2.2 Get a value of a property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

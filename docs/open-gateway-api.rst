@@ -1201,7 +1201,46 @@ Parameters / payload:
 
 Returns:
 
-To be done.
+A JSON with a list of properties.
+
+   ::
+   
+   {
+     "error": false,
+     "statusCode": 200,
+     "statusCodeReason": "OK. Properties retrieved.",
+     "contentType": "application/json",
+     "message": [
+       {
+         "properties": [
+           {
+             "pid": "brightness",
+             "monitors": "Brightness",
+             "read_link": {
+               "href": "/device/{oid}/property/{pid}",
+               "output": {
+                 "type": "object",
+                 "field": [
+                   {
+                     "name": "property",
+                     "schema": {
+                       "type": "string"
+                     }
+                   },
+                   {
+                     "name": "value",
+                     "schema": {
+                       "type": "integer"
+                     }
+                   }
+                 ]
+               }
+             }
+           }
+         ]
+       }
+     ]
+   }
 
 3.7.2.2 Get a value of a property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1336,7 +1375,46 @@ http://<gateway IP>:<port>/api/objects/{oid}/actions
 
 Returns:
 
-To be done.
+A JSON with a list of actions.
+
+   ::
+   
+      {
+        "error": false,
+        "statusCode": 200,
+        "statusCodeReason": "OK. Actions retrieved.",
+        "contentType": "application/json",
+        "message": [
+          {
+            "actions": [
+              {
+                "aid": "set-brightness",
+                "affects": "Brightness",
+                "read_link": {
+                  "href": "/device/{oid}/status/{aid}",
+                  "output": {
+                    "type": "object",
+                    "field": [
+                      {
+                        "name": "action",
+                        "schema": {
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "name": "status",
+                        "schema": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
 
 3.7.2.5 Execute an action
 ^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -23,7 +23,7 @@ Get the web application
 
   ::
 
-    git clone https://jalmela@bitbucket.org/bavenir/vicinity.git
+    git clone https://bitbucket.org/bavenir/vicinity/src/master/
 
 **Point the webApp to the API URL:**
 

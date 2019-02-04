@@ -9,7 +9,9 @@ The VICINITY Nodes create a controlled VICINITY Peer-to-peer (P2P) Network based
 .. image:: images/vcnt_highlevel_arch.png
    :alt: Figure 1
    :align: center
-:align: center (Figure 1)
+
+.. class:: center
+(Figure 1)
 
 The VICINITY provides semantic interoperability features to facilitate exchange of user data between IoT devices and value-added services to overcome technology differences between each connected IoT ecosystem. Thus, communication with each device or service via VICINITY P2P Network is standardised regardless of the technology the device or service is connected to a VICINITY Node. This semantic interoperability approach is based on the work being done by the Web of Things (WoT) WG [#f2]_ , where a proposal for describing, exposing and consuming web things by leveraging Semantic Web technologies is in development. Such web things are things that can be accessed through the Web, either physically or abstract.
 

@@ -7,7 +7,8 @@ The objective of the VICINITY architecture [#f1]_  is to facilitate interoperabi
 The VICINITY Nodes create a controlled VICINITY Peer-to-peer (P2P) Network based on these rules defined by VICINITY Neighbourhood Manager (Figure 1 – yellow and blue arrows) in VICINITY Cloud. In VICINITY P2P Network, VICINITY Nodes communicate user data directly between each other (red arrows in the following figure). Moreover, the VICINITY P2P Network support VICINITY Node with security services (such as end-to-end encryption, data integrity, etc.) to ensure security and privacy of exchanged user data.
 
 .. image:: images/vcnt_highlevel_arch.png
-(Figure 1)
+   :alt: Figure 1
+   :align: center
 
 The VICINITY provides semantic interoperability features to facilitate exchange of user data between IoT devices and value-added services to overcome technology differences between each connected IoT ecosystem. Thus, communication with each device or service via VICINITY P2P Network is standardised regardless of the technology the device or service is connected to a VICINITY Node. This semantic interoperability approach is based on the work being done by the Web of Things (WoT) WG [#f2]_ , where a proposal for describing, exposing and consuming web things by leveraging Semantic Web technologies is in development. Such web things are things that can be accessed through the Web, either physically or abstract.
 

@@ -169,8 +169,7 @@ directories are in bold:
     README.md←- Roughly the same information as here + changelog.
     .settings/
     src/←- Source files.
-    target/←- This is where you find pre-built JAR executable (or your own build).
-    `print "`**`Hello world`**`";`
+    ``**`target/←- This is where you find pre-built JAR executable (or your own build).`**``    
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `2.1.1.2 Building the OGWAPI from source codes`_. Otherwise,

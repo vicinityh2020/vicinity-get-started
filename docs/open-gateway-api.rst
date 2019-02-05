@@ -170,7 +170,7 @@ directories are in bold:
     .settings/
     src/←- Source files.
     target/←- This is where you find pre-built JAR executable (or your own build).
-    > sample **sample** sample
+    `print "`**`Hello world`**`";`
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `2.1.1.2 Building the OGWAPI from source codes`_. Otherwise,

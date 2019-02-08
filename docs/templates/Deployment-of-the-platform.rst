@@ -1,5 +1,7 @@
 .. note:: Linux machine. Tested in Debian Jessie and Ubuntu
 
+.. note:: This section is pending an important update to comply with SHAR-Q D7.1
+
 If you are interested to deploy private instance of VICINITY Neighbourhood Manager please follow the following guideline.
 In case you just want to make use of the platform please proceed to the next section of the wiki.
 

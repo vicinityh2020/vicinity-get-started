@@ -4,4 +4,4 @@ bin/
 include/
 lib/
 pip-selfcheck.json
-docs/_build/*
+docs/_build/

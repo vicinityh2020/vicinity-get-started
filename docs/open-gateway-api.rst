@@ -254,6 +254,12 @@ can rename it now to your liking.
 
     # cp /path/to/the/repository/target/ogwapi-jar-with-dependencies.jar /opt/ogwapi/gateway.jar
 
+Next is necessary to create folder for log files.
+
+  ::
+  
+    # mkdir /opt/ogwapi/log
+
 Now make sure, that the running directory has the right owner and the
 JAR file is executable:
 

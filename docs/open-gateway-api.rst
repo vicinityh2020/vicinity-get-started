@@ -326,6 +326,11 @@ You can install the latest version of the VICINITY Gateway API from docker (in t
 
     docker run -d -p 8181:8181 -it --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
 
+To run VICINITY Gateway API as docker with logs outside of container you need to export log volume:
+
+  ::
+  
+     docker run -d -p 8181:8181 -it -v ~/tmp:/gateway/log --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
 
 
 2.2 Configuration

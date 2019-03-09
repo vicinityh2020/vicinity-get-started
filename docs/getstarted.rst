@@ -4,18 +4,6 @@ Get started
 
 This "simple:)" get started guide provides step by step approach to integrate IoT infrastructure in VICINITY.
 
-
-
------------------------------------------------
-Install the VICINITY Gateway API from Docker (Level Docker)
------------------------------------------------
-You can install the latest version of the VICINITY Gateway API from docker (in this case all configuration and logs are part of the docker):
-
-  ::
-
-    docker run -d -p 8181:8181 -it --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
-
-
 -----------------------------------------------
 Install the VICINITY Gateway API from GitHub (Level Experienced)
 -----------------------------------------------

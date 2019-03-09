@@ -5,7 +5,7 @@ Get started
 This "simple:)" get started guide provides step by step approach to integrate IoT infrastructure in VICINITY.
 
 -----------------------------------------------
-Install the VICINITY Gateway API from GitHub (Level Experienced)
+Install the VICINITY Gateway API from GitHub
 -----------------------------------------------
 We will start with simple VICINITY Gateway API installation.
 

@@ -10,11 +10,11 @@ Welcome to VICINITY Get Started's documentation!
    :maxdepth: 5
    :caption: Contents:
 
+   getstarted
    architecture
    open-gateway-api
    neighbourhood
    vocabulary
-   getstarted
 
 Indices and tables
 ==================

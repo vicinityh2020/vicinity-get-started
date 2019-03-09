@@ -331,6 +331,14 @@ To run VICINITY Gateway API as docker with logs outside of container you need to
   ::
   
      docker run -d -p 8181:8181 -it -v ~/tmp:/gateway/log --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
+     
+If you would like to have custom configuration you can bind you configuration file as follows using docker run mount configuration option:
+
+  ::
+  
+    docker run -d -p 8181:8181 -it -v ~/tmp:/gateway/log --mount  type=bind,source=/absolut/path/to/your/GatewayConfig.xml,readonly --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
+
+Note, that your custom configuration needs to be located in current directory or subdirectory.
 
 
 2.2 Configuration

@@ -114,9 +114,13 @@ Depending on the OS you are using, there are multiple approaches that
 can be taken while installing the OGWAPI software on your machines. For
 all OS types there is the possibility to build the OGWAPI from source
 codes. As the software is written in plain Java that is runnable on
-OpenJDK JVM, no big issues are expected. For users of Linux OS, there is
+OpenJDK JVM, no big issues are expected.
+
+For users of Linux OS, there is
 also the ability to install the OGWAPI using two most popular
 installation managers - .deb and .rpm.
+
+For the docker funs users can use latest version image.
 
 2.1.1 Linux / Unix – installation from the Git repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -312,6 +316,17 @@ Detailed documentation is yet to be tested. However, as the software is
 written in plain Java, based on the OpenJDK JVM, the building from
 source code approach should be working, provided you execute equivalent
 steps as described in the `2.1.1.2 Building the OGWAPI from source codes`_.
+
+2.1.6 Docker
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can install the latest version of the VICINITY Gateway API from docker (in this case all configuration and logs are part of the docker):
+
+  ::
+
+    docker run -d -p 8181:8181 -it --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
+
+
 
 2.2 Configuration
 -----------------

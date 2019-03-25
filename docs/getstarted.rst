@@ -21,13 +21,13 @@ We will start with simple VICINITY Gateway API installation.
   ::
 
     cd vicinity-gateway-api
-    mvn clean compile assembly:single
+    mvn clean package
 
 3. Create dedicated system user for VICINITY Gateway API
 
   ::
 
-    adduser --system --group --no-create-home --shell /bin/sh ogwapi
+    adduser --system --group --home /opt/ogwapi --shell /bin/sh ogwapi
 
 
 4. Put it all in the right place

@@ -160,20 +160,23 @@ directories are in bold:
 
   ::
 
-    ./
-    ../
-    .classpath
-    config/←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.
-    docs/←- Javadoc, Swagger, and this Integrator handbook.
-    .git/←- Git configuration.
-    LICENSE←- License file.
-    log/←- When you run it from an IDE, logs are by default stored here. You can ignore it otherwise.
-    pom.xml←- Maven configuration.
-    .project←- Eclipse IDE project directory.
-    README.md←- Roughly the same information as here + changelog.
-    .settings/
-    src/←- Source files.
-    target/←- This is where you find pre-built JAR executable (or your own build).
+   ./
+   ../
+   .classpath
+   config/		←- Sample OGWAPI configuration file. Also, when you run it from an IDE, the file inside is the actual valid config.
+   data/			←- Persistent data, keeps the OGWAPI’s state after restart.
+   docs/			←- Javadoc, Swagger, and this Integrator handbook.
+   .git/			←- Git configuration.
+   keystore/		←- Keystore file, in case you decide to run OGWAPI with HTTPS.
+   LICENSE		←- License file. 
+   log/			←- When you run it from an IDE, logs are by default stored here. You can ignore it otherwise.
+   pom.xml		←- Maven configuration.
+   .project		←- Eclipse IDE project directory.
+   README.md		←- Roughly the same information as here + changelog.
+   .settings/
+   src/			←- Source files.		
+   target/		←- This is where you find pre-built JAR executable (or your own build). 
+
 
 Now, if you want to build the OGWAPI yourself, it is good time to jump
 to section `2.1.1.2 Building the OGWAPI from source codes`_. Otherwise,
@@ -228,7 +231,7 @@ If none applies to you, you can create a dedicated system user named
 
   ::
 
-    # adduser --system --group --no-create-home --shell /bin/sh ogwapi
+    # adduser --system --group --home /opt/ogwapi --shell /bin/sh ogwapi
 
 2.1.1.4 Putting it all in the right place
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -285,6 +288,9 @@ The final directory tree should look like this:
     drwxr-xr-x 4 ogwapi ogwapi 4096 feb 27 16:43 ./
     drwxr-xr-x 5 root root 4096 feb 27 13:39 ../
     drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:41 config/
+    drwxr-xr-x 2 ogwapi ogwapi    4096 feb 27 13:41 config/
+    drwxrwxr-x 2 ogwapi ogwapi    4096 mar 25 12:02 data/
+    drwxrwxr-x 2 ogwapi ogwapi    4096 mar 25 12:02 keystore/
     -rwxr--r-- 1 ogwapi ogwapi 9331984 feb 27 13:41 gateway.jar\*
     drwxr-xr-x 2 ogwapi ogwapi 4096 feb 27 13:52 log/
 
@@ -463,14 +469,14 @@ repository:
 
 1. Location of log file and setting the desired log level.
 
-Change the parameter *logging→file* to desired location, presumably the
+Change the parameter *logging.file* to desired location, presumably the
 one you created during installation. If you installed the OGWAPI via a
 package manager, the log file is set to
 */var/log/ogwapi/%s-gateway.log*. Note that the %s character in the
 string is replaced by a time stamp of the moment, when the OGWAPI
 instance is started.
 
-Also, you might want to adjust *logging→level* to fit your needs.
+Also, you might want to adjust *logging.level* to fit your needs.
 Permitted levels are (in order from most quiet, to most talkative) OFF,
 SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST.
 
@@ -481,8 +487,8 @@ set an IP address and a port of your local Agent, that will process
 these requests. If you don’t have an Agent running, you can state the IP
 address and port of your Adapter, provided it can correctlyprocess the
 requests (see the section `4 Integration and adapter development`_). The
-parametersto change are *connector→restAgentConnector→agentIP* and
-*connector→restAgentConnector→agentPort.*
+parametersto change are *connector.restAgentConnector.agent* and
+*connector.restAgentConnector.agentPort.*
 
 You can always play around with the other parameters. Their meaning and
 how they affect the system behaviour is (should be) explained in-line in
@@ -497,32 +503,59 @@ Sample configuration file can be found within cloned Git repository, or
 in /etc/ogwapi/GatewayConfig.xml if you installed the OGWAPI via a
 package manager.
 
--  general->server
+-  general.server
 
    URL/IP address of the communication server. If not set, the
-   application exits.
+   application exits. This value can't be just an IP address if 
+   encryption is to be used.
 
--  general->port
+-  general.port
 
    Port of the communication server. Defaults to 5222.
 
--  general->encryption
+-  general.neighbourhoodManagerServer
+
+   This parameter represents a URL to Neighbourhood Manager API. This 
+   value can't be just an IP address. Default is commserver.vicinity.ws.
+
+-  general.neighourhoodManagerPort
+
+   Port on which the NM listens for incoming requests. Default is 3000.
+
+-  general.neighbourhoodManagerUsername
+   
+   User name to be used with NM communication.
+
+-  general.neighbourhoodManagerPassword
+   
+   Password to be used with NM communication.
+
+-  general.dataDirectory
+
+   This parameter represents a path to directory for storing data. 
+   Default is 'data/' inside the directory where the OGWAPI is run.
+
+-  general.loadTDFromServer
+
+   This parameter is for debug reason. Default is true.
+
+-  general.encryption
 
    Setting this parameter to true will enable encryption of
    communication. The policy is to try the strongest mechanisms first.
    Setting it to false will disable the encryption (for debug purposes).
    Default is true.
 
--  general->requestMessageTimeout
+-  general.requestMessageTimeout
 
    Number of seconds to consider request message as no longer relevant.
    After a request is sent from point A to point B, point A waits for
    response. If the response does not arrive until this timeout expires,
    point B is considered unreachable. If the response arrives after this
    happens, the response is ignored and discarded and a new request has
-   to be sent. Default is 60 seconds.
+   to be sent. Default is 90 seconds.
 
--  general->sessionRecovery
+-  general.sessionRecovery
 
    This parameter defines how the sessions that went down should be
    recovered. A session is a connection created when individual object
@@ -566,14 +599,14 @@ package manager.
    user devices or have a need to implement a kind of presence into
    their application. Default is proactive.
 
--  general->sessionExpiration
+-  general.sessionExpiration
 
    When sessionRecovery is set to passive, use this to set the interval
    after which a connection without refreshing will be terminated. Note
    that this can't be smaller number than 5 seconds. Default is 30
    seconds.
 
--  **actions->timeToKeepReturnValues**
+-  actions.timeToKeepReturnValues
 
    This parameter sets how long (in minutes) after successful or failed
    execution a task's return value should be retained. In other words,
@@ -582,7 +615,7 @@ package manager.
    return values from piling up in the device's memory. If not set, it
    defaults to 1440 minutes (24 hours).
 
--  actions->pendingTaskTimeout
+-  actions.pendingTaskTimeout
 
    If a task is pending to be run, how long (in minutes) it should
    remain in the queue before being tagged as failed by timing out. This
@@ -592,7 +625,7 @@ package manager.
    hour. Again, it highly depends on what the action is about and
    integrator's common sense. Default value is 120 minutes (2 hours).
 
--  actions->maxNumberOfPendingTasks
+-  actions.maxNumberOfPendingTasks
 
    Maximum number of tasks being queued in pending status, waiting to be
    run. This depends on number of objects that are connecting via this
@@ -602,7 +635,7 @@ package manager.
    that can be executed on your local object, maximum number of pending
    tasks in memory will be twice this number. Default is 128.
 
--  logging->file
+-  logging.file
 
    Set a relative or absolute path to log file. In order to
    differentiate among multiple log files, a '%s' can be added to
@@ -610,7 +643,7 @@ package manager.
    stamp during start. Each start of the Gateway will produce a new log
    file with a new time stamp.
 
--  logging->level
+-  logging.level
 
    Set a log level - messages with severity level lower than this
    setting will not be recorded. The list of levels in descending order
@@ -635,7 +668,7 @@ package manager.
    event logging. This value can also be set to OFF, which will disable
    the logging mechanism completely.
 
--  logging->consoleOutput
+-  logging.consoleOutput
 
    Setting this value to 'true' will cause the application to log its
    output to console, aside from logging it into file. This can be
@@ -643,11 +676,11 @@ package manager.
    suppress this behaviour, instead logging events solely to log file.
    This is the default behaviour.
 
--  xmpp->domain
+-  xmpp.domain
 
-   XMPP domain that is served by the server. Defaults to bavenir.eu.
+   XMPP domain that is served by the server. Defaults to vicinity.ws.
 
--  xmpp-> debugging
+-  xmpp.debugging
 
    Enables debugging of the XMPP communication between the Gateway and
    theserver / other Gateways. Note that this is to be used in
@@ -655,25 +688,47 @@ package manager.
    http://download.igniterealtime.org/smack/docs/latest/documentation/debugging.html.
    Default is false.
 
--  api->port
+-  api.port
 
    Set the port on which the API will be served. If not explicitly set,
    it defaults to 8181. Be aware that running the software on privileged
    ports (<1024) needs root's privileges.
 
--  api->enableHttps
+-  api.enableHttps
 
    Set whether the API will be served via HTTP or HTTPS. Takes either
    trueor false value. Default is true, however in some installations it
    might not be supported.
 
--  api->authRealm
+-  api.keystoreFile
+   Path to the keystore file. This parameter is only read when the enableHttps 
+   parameter is set to true. If it is, but there is no keystore file 
+   specified, it will default to 'keystore/ogwapi.keystore' in the 
+   installation directory of OGWAPI.
+
+-  api.keystorePassword
+   
+   Password for the keystore. This parameter is only read when the 
+   enableHttps parameter is set to true. No defaults are specified, so 
+   watch for exceptions.
+
+-  api.keyPassword
+   
+   Password for the key. This parameter is only read when the enableHttps
+   parameter is set to true. No defaults are specified, so watch for 
+   exceptions. 
+
+-  api.keystoreType
+   
+   The type of the keystore. The default (and recommended) type is PKCS12.
+
+-  api.authRealm
 
    Authentication realm for the RESTLET BEARER authentication schema. It
    is only taken into account if the authMethod is set to bearer.
    Defaults to bavenir.eu.
 
--  api->authMethod
+-  api.authMethod
 
    Authentication method for objects logging into the Gateway API.
    Following methods are valid:
@@ -686,37 +741,71 @@ package manager.
 
    none-No authentication. Experimental, for debugging purposes only.
 
-   --------------
-
    Defaults to basic.
 
--  connector->restAgentConnector->useDummyCalls
+-  connector.restAgentConnector.useDummyCalls
 
    If there is a need to test the OGWAPI responsiveness to external
    requests without making real calls to local REST Agent, setting this
    parameter to 'true' will make OGWAPI perform only simulated calls.
    Defaults to false.
 
--  connector->restAgentConnector->useHttps
+-  connector.restAgentConnector.useHttps
 
    Whether or not the OGWAPI should attempt to use HTTPS to connect to
    the REST Agent. Defaults to false.
 
--  connector->restAgentConnector->agentIp
+-  connector.restAgentConnector.acceptSelfSignedCertificate
+   Setting this to true will make OGWAPI accept self signed certificates
+   ('snake oil') from the REST Agent. Please note that this does not mean
+   it will ignore certificate errors! If the Agent is running on localhost,
+   OGWAPI will still refuse connection to an Agent with self signed 
+   certificate with e.g. CN=mymachine.eu (because it will look for 
+   CN=localhost). Default is true. 
+
+-  connector.restAgentConnector.agentAuthenticationMethod
+   
+   If the Agent requests authentication, set this parameter to appropriate 
+   value. Accepted values are:
+   
+   none - The Agent does not request authentication.
+   basic - The Agent requests authentication, the method is Basic HTTP. 
+
+   NOTE: For now, no more authentication methods are supported. 
+   Default is none.
+
+-  connector.restAgentConnector.agentUsername
+
+   User name for authentication with Agent.
+
+-  connector.restAgentConnector.agentPassword
+
+   Password for authentication with Agent.
+
+-  connector.restAgentConnector.agentTimeout
+
+   Number of seconds the OGWAPI is supposed to wait for an answer from the 
+   Agent. Default is 60, as in most of the HTTP clients.
+
+-  connector.restAgentConnector.agent
 
    If the REST Agent listens on a different interface (or a different
    machine), it is necessary to set its IP address with this parameter.
    Defaults to localhost.
 
--  connector->restAgentConnector->agentPort
+-  connector.restAgentConnector.agentPort
 
    Port on which the REST Agent listens. Defaults to 9997.
 
--  search->sparql->gwApiServicesUrl
+-  search.sparql.gwApiServicesUrl
 
    URL of the Gateway API Service facilitating the SPARQL search.
    Usually there is no need to change this, unless informed that it is
    necessary.
+
+-  search.semantic.semanticSearchAPI
+
+   This parameter represents a URL path to Semantic Search API.
 
 2.3 Running the OGWAPI
 ----------------------
@@ -850,7 +939,34 @@ kind of a payload. Both payloads are usually in a form of JSON and its
 precise structure is driven by semantic vocabulary [link a document
 where it is explained].
 
-3.2 Testing and debugging
+3.2 Using HTTPS on OGWAPI
+-------------------------
+
+Although it is likely that the OGWAPI will only be reachable from your local infrastructure, the ever increasing growth of wireless communication brings new security challenges, and sooner or later you will need to protect your data when making a request to your OGWAPI. OGWAPI can support HTTPS in both directions – from the Agent (when your local infrastructure makes a request) and to an Agent (when there is a request coming from the outside network).
+
+3.2.1 Enabling HTTPS on OGWAPI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First of all, you need to obtain certificates, either signed by the authority or self signed. The former is of course recommended, but not always applicable. However, if you have them, just turn them into PKCS12 keystore, and put them into the keystore directory in your OGWAPI installation directory. Then configure the OGWAPI as stated further down the text. 
+If you don’t have them, you either have to generate your own and then turn them into a keystore, or generate the keystore directly and then extract the public certificate from it. We will go with the second option, since it is shorter, but the decision is yours. 
+
+But hey, you may ask, if I can generate the keystore directly, why would I want to extract the public certificate from it, when I’ll have no use for it? The reason is, that since you are going to use self signed certificate, your communication will be encrypted but it will not protect you from man-in-the-middle attack – your Agent / Adapter will need to have some equivalent of ‘accept self signed certificates’ parameter enabled. However, if you extract the public certificate from your keystore, move it into the Agent / Adapter host and set it as trusted, you will effectively complete the verification chain without turning on the ‘accept the self signed certificate’. So that step is actually optional, but recommended. Generate the keystore like this:
+
+$ keytool -genkey -v -alias localOgwapi -dname "CN=localhost,OU=IT,O=JPC,C=GB" -keypass password -keystore ogwapi.keystore -storepass password -keyalg "RSA" -keysize 2048 -validity 3650 -storetype "PKCS12"
+
+Watch out for the CN string – there has to be a correct machine name, if it is not localhost, even if you decide to accept the self signed certificates. Match the -keypass password with api.keyPassword parameter and -storepass with api.keystorePassword parameter. Store the file into the keystore directory of your OGWAPI. As far as OGWAPI is concerned, set the api.enableHttps to true and you are done. One more thing would be to extract the public certificate from the keystore. Do it like this:
+
+$ keytool -export -v -alias localOgwapi -file ogwapi.cer -keystore ogwapi.keystore -storepass password
+
+And put it to the Agent / Adapter machine as trusted certificate. 
+
+3.2.2 Configuring OGWAPI to use HTTPS provided by Agent / Adapter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is the reverse case – setting the OGWAPI to use the encryption when connecting to the Agent / Adapter. The same as in previous section applies, if you have a self signed certificate in use by your Agent / Adapter, take its public part, move it to OGWAPI machine and set it as trusted. If unable to do so, set the OGWAPI parameter connector.restAgentConnector.acceptSelfSignedCertificate to true. Of course, set connector.restAgentConnector.useHttps to true. Changes will, as always, take effect after you restart the OGWAPI.
+
+
+3.3 Testing and debugging
 -------------------------
 
 As the communication with the OGWAPI is done via HTTP, it is possible to
@@ -860,7 +976,7 @@ For more information about using these tools, please consult the online
 documentation for the tool of your choice. For more information about
 the endpoints, please read on.
 
-3.2.1 Error propagation
+3.3.1 Error propagation
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt0.png
@@ -973,7 +1089,7 @@ Example of an error in the P2P network.
 .. image:: images/ogwapi/OGWAPI_ErrorPropagation_pt3.png
 Example of an error in the remote IoT infrastructure.
 
-3.3 Object discovery and registration
+3.4 Object discovery and registration
 -------------------------------------
 
 Having an Agent connected into the OGWAPI as an additional layer brings
@@ -1003,7 +1119,7 @@ following steps:
 The set of new devices will be registered on our servers and you should
 receive their freshly generated credentials in the response.
 
-3.4 Data consumption
+3.5 Data consumption
 --------------------
 
 Data consumption is, along with object exposing, the functionality that
@@ -1066,7 +1182,7 @@ called in order to do this job:
    aid}/tasks/{tid from step 3} – cancels the task if desired
    (optional…).
 
-3.5 Exposing your IoT objects
+3.6 Exposing your IoT objects
 -----------------------------
 
 For now we have been discussing how to poll a remote object for data,
@@ -1116,7 +1232,7 @@ sent to PUT /api/events/{eid} on an OGWAPI on its side, then distributed
 to subscribed objects, each of which needs to implement PUT
 /api/objects/{oid}/events/{eid}.
 
-3.6 Search and querying the network
+3.7 Search and querying the network
 -----------------------------------
 
 A SPARQL query can be used to poll the network of your befriended
@@ -1125,7 +1241,7 @@ JSON in the request body. The endpoint is:
 
 POST /api/search/sparql
 
-3.7 Complete description of Open Gateway API endpoints
+3.8 Complete description of Open Gateway API endpoints
 ------------------------------------------------------
 
 For more information about HTTP REST requests please visit complete REST API description. https://vicinityh2020.github.io/vicinity-gateway-api/#/

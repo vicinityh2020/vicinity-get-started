@@ -4,14 +4,14 @@ The objective is to provide some guidance to non-experienced users of the platfo
 Pre-requisites
 ##############
 
-* You have successfully `registered <Register-organisation.rst>`_ a new organisation.
+* You have successfully `registered <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#Register-organisation.rst>`_ a new organisation.
 
 First login
 ###########
 
 * The first time you login, your organisation has only one user with the administrator role. There are no access points, devices or services available at this point.
 
-* Go to the organisation profile and `give new roles to your user <User-management.rst>`_. For simplicity, grant all the roles and you will get full power over your organisation. It is possible to have different users having different roles and responsibilities, to learn more go to the `user properties section <User-properties.rst>`_.
+* Go to the organisation profile and `give new roles to your user <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#User-management.rst>`_. For simplicity, grant all the roles and you will get full power over your organisation. It is possible to have different users having different roles and responsibilities, to learn more go to the `user properties section <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#User-properties.rst>`_.
 
 * As an optional step, making your user visible to others in the platform is a good idea. The reason is that in future steps it will be necessary for making devices and services visible in the platform.
 
@@ -20,7 +20,7 @@ First login
 Create an access point
 ######################
 
-* In order to be able to register devices and services, it is necessary to have access credentials for your agent/adapter. This is what we call `access point <Access-points.rst>`_ in the platform.
+* In order to be able to register devices and services, it is necessary to have access credentials for your agent/adapter. This is what we call `access point <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#Access-points.rst>`_ in the platform.
 
 Next steps
 ##########

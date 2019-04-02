@@ -2,7 +2,7 @@ This section is about the Access Points, which are the virtual
 representation of an infrastructure. In a real scenario, an access point
 represents 2 or 3 components:
 
-* Gateway: Software that is used to communicate with the platform's communication server and the P2P network. See all information regarding the VICINITY Open Gateway `HERE <../open-gateway-api.rst>`_
+* Gateway: Software that is used to communicate with the platform's communication server and the P2P network. See all information regarding the VICINITY Open Gateway `HERE <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#open-gateway-api.rst>`_
 * Agent: [OPTIONAL] It is used to register the smart components of an infrastructure into the platform. It implements logic to handle the process of registering, updating and removing items from/to the platform. It needs to have the infrastructure components described in a common format. See all information regarding the VICINITY agent `HERE <https://github.com/vicinityh2020/vicinity-agent>`_
 * Adapter: It is the specific software that translates the infrastructure conventions, definitions or API endpoints into the common format. It is mapping all the properties and capabilities of each smart component so the platform can understand what it is. It could implement some of the agent functionalities depending on the needs.
 

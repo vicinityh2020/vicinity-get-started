@@ -4,7 +4,7 @@ There have been set up some tests to check some of the functionalities of the pl
 
 1. Set up a test db
 
-(In the section `Platform deployment <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#Deployment-of-the-platform.rst>`_, there is more info regarding how to setup Mongo, create users or add authorisation to access databases)
+(In the section `Platform deployment <neighbourhood.html#deployment-of-the-platform>`_, there is more info regarding how to setup Mongo, create users or add authorisation to access databases)
 
     * Create a clean mongo database. We will assume the name "nmapitest".
     * Authorize one user to make use of this database. We will assume user and password to be "test".

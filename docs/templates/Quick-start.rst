@@ -4,7 +4,7 @@ The objective is to provide some guidance to non-experienced users of the platfo
 Pre-requisites
 ##############
 
-* You have successfully `registered <https://vicinity-get-started.readthedocs.io/en/latest/neighbourhood.html#Register-organisation.rst>`_ a new organisation.
+* You have successfully `registered <neighbourhood.rst#register-an-organisation>`_ a new organisation.
 
 First login
 ###########

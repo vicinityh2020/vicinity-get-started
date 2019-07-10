@@ -65,7 +65,107 @@ We will start with simple VICINITY Gateway API installation.
     FINE: HTTP server component started.
 
 
+-----------------------------------------------
+Run the VICINITY Gateway API as a service
+-----------------------------------------------
+This procedure is for linux only.
 
+1. You must first have the structure ready.
+
+  ::
+  
+    .../ogwapi_folder/
+    .../ogwapi_folder/ogwapi.jar
+    .../ogwapi_folder/data/
+    .../ogwapi_folder/log/
+    .../ogwapi_folder/config/
+    .../ogwapi_folder/config/GatewayConfig.xml
+
+2. Create a file under **/etc/systemd/system/** with nano or vi and paste the example script below. 
+   eg. **sudo vim /etc/systemd/system/ogwapi.service**
+| 
+3. Paste the code below in your new file:
+
+  ::
+
+    [Unit]
+    Description = ogwapi service
+    After = network.target
+
+    [Service]
+    Type = forking
+    ExecStart = /usr/local/bin/ogwapi.sh start
+    ExecStop = /usr/local/bin/ogwapi.sh stop
+    ExecReload = /usr/local/bin/ogwapi.sh reload
+    SuccessExitStatus=143
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+
+
+4. Create a file with under **/usr/local/bin/** 
+   (eg. **sudo vim /usr/local/bin/ogwapi.sh**) and put there the code below.
+   
+
+  ::
+
+    #!/bin/sh 
+    SERVICE_NAME=ogwapi 
+    PATH_TO_JAR_FOLDER=/home/andrej/ogwapi 
+    PATH_TO_JAR=$PATH_TO_JAR_FOLDER/ogwapi.jar 
+    PID_PATH_NAME=/tmp/ogwapi-pid 
+    cd $PATH_TO_JAR_FOLDER 
+    case $1 in 
+      start) 
+          echo "Starting $SERVICE_NAME ..." 
+          if [ ! -f $PID_PATH_NAME ]; then 
+              nohup java -jar $PATH_TO_JAR >> $PATH_TO_JAR_FILE_FOLDER/ogwapiService.out 2>&1& 
+              echo $! > $PID_PATH_NAME 
+              echo "$SERVICE_NAME started ..." 
+          else 
+              echo "$SERVICE_NAME is already running ..." 
+          fi 
+      ;; 
+      stop) 
+          if [ -f $PID_PATH_NAME ]; then 
+              PID=$(cat $PID_PATH_NAME); 
+              echo "$SERVICE_NAME stoping ..." 
+              kill $PID; 
+              echo "$SERVICE_NAME stopped ..." 
+              rm $PID_PATH_NAME 
+          else 
+              echo "$SERVICE_NAME is not running ..." 
+          fi 
+      ;; 
+      restart) 
+          if [ -f $PID_PATH_NAME ]; then 
+              PID=$(cat $PID_PATH_NAME); 
+              echo "$SERVICE_NAME stopping ..."; 
+              kill $PID; 
+              echo "$SERVICE_NAME stopped ..."; 
+              rm $PID_PATH_NAME 
+              echo "$SERVICE_NAME starting ..." 
+              nohup java -jar $PATH_TO_JAR >> $PATH_TO_JAR_FILE_FOLDER/ogwapiService.out 2>&1& 
+              echo $! > $PID_PATH_NAME 
+              echo "$SERVICE_NAME started ..." 
+          else 
+              echo "$SERVICE_NAME is not running ..." 
+          fi 
+      ;; 
+    esac
+
+5. Modify the SERVICE_NAME, PATH_TO_JAR_FOLDER, and choose a PID_PATH_NAME for the file you are going to use to store your service ID.
+
+6. Write the file and give execution permisions ex. **sudo chmod +x /usr/local/bin/ogwapi.sh**
+
+7. Enable the service with the command **sudo systemctl enable ogwapi**
+
+8. To run the service **sudo service ogwapi start**
+
+9. To check the service status **sudo service ogwapi status**
+
+10. To stop the service **sudo service ogwapi stop**
 
 -----------------------------------------------
 Install the VICINITY Example Adapter

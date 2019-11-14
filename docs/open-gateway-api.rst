@@ -344,6 +344,8 @@ Key generator --> genkeys.sh
     #  mkdir log/ data/ config/ keystore/
     #  mv /path/where/is/stored/GatewayConfig.xml config/
     #  mv /path/where/is/stored/genkeys.sh keystore/
+    #  mv /path/where/is/stored/ogwapi.cer keystore/
+    #  mv /path/where/is/stored/ogwapi.keystore keystore/
 
 log/ : Stores your Gateway logs.
 

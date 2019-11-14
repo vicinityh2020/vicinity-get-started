@@ -246,13 +246,14 @@ and change permissions. Start with creating it:
     # mkdir /opt/ogwapi
 
 Now copy necessary files – when you are installing the OGWAPI from the
-git repositroy, only two files are needed to be copied – the binary JAR
-file and the configuration directory.
+git repositroy, only three files are needed to be copied – the binary JAR
+file, the configuration directory and keystore directory.
 
   ::
 
     # cp -r /path/to/the/repository/config /opt/ogwapi/
-
+    # cp -r /path/to/the/repository/keystore /opt/ogwapi/
+    
 The OGWAPI JAR file may have a cumbersome name, however it gets
 distributed like that in order to know which version you are using. You
 can rename it now to your liking.
@@ -261,11 +262,12 @@ can rename it now to your liking.
 
     # cp /path/to/the/repository/target/ogwapi-jar-with-dependencies.jar /opt/ogwapi/gateway.jar
 
-Next is necessary to create folder for log files.
+Next is necessary to create folder for log files and data persistency.
 
   ::
   
     # mkdir /opt/ogwapi/log
+    # mkdir /opt/ogwapi/data
 
 Now make sure, that the running directory has the right owner and the
 JAR file is executable:
@@ -328,21 +330,84 @@ steps as described in the `2.1.1.2 Building the OGWAPI from source codes`_.
 
 You can install the latest version of the VICINITY Gateway API from docker (in this case all configuration and logs are part of the docker):
 
-  ::
+-  Step 1: Download from the Gateway repository the configuration file and the script for generating keys.
 
-    docker run -d -p 8181:8181 -it --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
+Configuration --> GatewayConfig.xml
 
-To run VICINITY Gateway API as docker with logs outside of container you need to export log volume:
+Key generator --> genkeys.sh
 
-  ::
-  
-     docker run -d -p 8181:8181 -it -v ~/tmp:/gateway/log --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
-     
-If you would like to have custom configuration you can bind you configuration file as follows using docker run mount configuration option:
+-  Step 2: Navigate to your preferred working directory and prepare the files and folders that you will need
 
   ::
-  
-    docker run -d -p 8181:8181 -it -v ~/tmp:/gateway/log --mount  type=bind,source=/absolut/path/to/your/GatewayConfig.xml,target=/gateway/config/GatewayConfig.xml,readonly --name vicinity-gateway-api --rm bavenir/vicinity-gateway-api
+
+    #  cd your/path/
+    #  mkdir log/ data/ config/ keystore/
+    #  mv /path/where/is/stored/GatewayConfig.xml config/
+    #  mv /path/where/is/stored/genkeys.sh keystore/
+
+log/ : Stores your Gateway logs.
+
+data/ : Persists the Gateway state after a restart. It can remember event channels, ongoing actions or object Thing Descriptions.
+
+config/ : Keeps the Gateway configuration.
+
+keystore/ : Keeps your SSH key pair and the script to generate it.
+
+-  Step 3: Generate a SSH key pair
+
+  ::
+
+    #  cd keystore/
+    #  chmod +x genkeys.sh
+    #  ./genkeys.sh
+      
+-  Step 4: Copy your "platform-pubkey.pem" into the Neighborhood Manager.
+
+Your Gateway needs to be linked to an identity in the VICINITY cloud. These identities are the Access Points. If you are not familiar with the Access Points refer to this story, the step 2 covers the creation of Access Points.
+Log in the Neighbourhood Manager and create an Access Point if you do not have it yet. Afterwards you can add a public key by pressing the blue key icon at the right side of your Access Point. Just copy the contents of "platform-pubkey.pem" file into the text box.
+
+-  Step 5: Update the configuration file to your needs
+
+The configuration comes preset for working in the production environment and using recommended settings. However, in the version 0.8 you need to add your identity (Access Point - AGID).
+Set the following parameters:
+platformSecurity.enable should be true.
+platformSecurity.identity should be your Access Point AGID.
+
+-  Step 6: The last step is running the Gateway with Docker.
+
+NOTE: If you had other Gateway versions running before, stop them and remove the old images.
+
+  ::
+
+    #  docker kill bavenir/vicinity-gateway-api
+    #  docker rm bavenir/vicinity-gateway-api
+    #  docker rmi bavenir/vicinity-gateway-api
+      
+Now we are ready to start the gateway running Docker.
+
+NOTE: Run the following command from your working directory (Step 2)
+
+  ::
+
+    #  docker run -d -it --rm -p 8181:8181 \
+            -v /your/path/to/log:/gateway/log \
+            -v /your/path/to/keystore:/gateway/keystore \
+            -v /your/path/to/data:/gateway/data \
+            --mount type=bind,source=/your/path/to/config/config_8180.xml,target=/gateway/config/GatewayConfig.xml,readonly \
+            --name gtw-api bavenir/vicinity-gateway-api:latest
+
+NOTE: You can change the port where the gateway is running by simply changing the first port after the flag -p (XXXX:8181). The second port should remain as 8181 because is used internally by docker. This might be necessary if you are running two gateways in the same server or computer.
+
+-  Final step: Verifying installation
+
+You can check list of currently running containers by:
+
+  ::
+    
+    #  docker containers ls
+
+
+Result of visualising docker running processesDocker image life cycle: VICINITY Gateway API docker image is automatically built from the GitHub repository. If your need an older version your can build the image by yourself using the docker directly stored in the repository. Currently, older versions of VICINITY Gateway API are not managed.
 
 Note, that your custom configuration needs to be located in current directory or subdirectory.
 
@@ -480,7 +545,7 @@ Also, you might want to adjust *logging.level* to fit your needs.
 Permitted levels are (in order from most quiet, to most talkative) OFF,
 SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST.
 
-1. IP address and port of the Agent.
+2. IP address and port of the Agent.
 
 In order to receive requests from the P2P network, it is necessary to
 set an IP address and a port of your local Agent, that will process
@@ -489,6 +554,12 @@ address and port of your Adapter, provided it can correctlyprocess the
 requests (see the section `4 Integration and adapter development`_). The
 parametersto change are *connector.restAgentConnector.agent* and
 *connector.restAgentConnector.agentPort.*
+
+3. Platform Security
+
+From the version 0.8, it is necessary to update two paramenters to enable the Gateway to Cloud authentication.
+platformSecurity.enable true
+platformSecurity.identity your-access-point-agid
 
 You can always play around with the other parameters. Their meaning and
 how they affect the system behaviour is (should be) explained in-line in
@@ -806,6 +877,45 @@ package manager.
 -  search.semantic.semanticSearchAPI
 
    This parameter represents a URL path to Semantic Search API.
+   
+-  messageCounter.countOfRecords
+   
+   The number of records that are sent to NM at once
+ 
+-  platformSecurity.enable
+
+   Tries to authenticate the gateway into the platform, if disabled the gateway functions in anonymous mode and restrictions might apply (true or false)
+   
+-  platformSecurity.identity
+
+   AGID of the Access Point used to authenticate the gateway (AGID string) 
+ 
+-  platformSecurity.ttl
+
+   Token time to live. Sets duration of the authentication token validity. Default is one week. It is set in milliseconds.
+   
+-  platformSecurity.path
+
+   Security files path
+   
+-  platformSecurity.privkey
+
+   Private Key file name
+   
+-  platformSecurity.pubkey
+
+   Public Key file name
+
+2.2.4 Uploading your SSH key to the Neighbourhood Manager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is necessary to autheticate your Gateway messages to the cloud. It is available from the version 0.8.
+
+-  Generate the keys with the script available in the keystore/ directory.
+
+-  Copy your "platform-pubkey.pem" into the Neighborhood Manager.
+
+To do so: Log in the Neighbourhood Manager and create an Access Point if you do not have it yet. Afterwards you can add a public key by pressing the blue key icon at the right side of your Access Point. Just copy the contents of "platform-pubkey.pem" file into the text box.
 
 2.3 Running the OGWAPI
 ----------------------
